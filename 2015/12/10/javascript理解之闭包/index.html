@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>javascript理解之闭包 | eric-peng的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、闭包的概念闭包 是指有权访问另一个函数作用域中的变量的函数，创建闭包的最常见的方式就是在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript理解之闭包">
+<meta property="og:url" content="http:eric-peng.github.io/2015/12/10/javascript理解之闭包/index.html">
+<meta property="og:site_name" content="eric-peng的博客">
+<meta property="og:description" content="一、闭包的概念闭包 是指有权访问另一个函数作用域中的变量的函数，创建闭包的最常见的方式就是在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量。">
+<meta property="og:updated_time" content="2015-12-10T13:48:23.122Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript理解之闭包">
+<meta name="twitter:description" content="一、闭包的概念闭包 是指有权访问另一个函数作用域中的变量的函数，创建闭包的最常见的方式就是在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量。">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+   
+	<script type="text/javascript"> 
+		var _hmt = _hmt || [];
+			(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "//hm.baidu.com/hm.js?5dba26570846fb50c527e5133d251a7a";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+			})();
+	</script>
+ 
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://tp4.sinaimg.cn/5626580951/180/5728799106/1" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">eric peng</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">我的首页</a></li>
+				        
+							<li><a href="/archives">全部博客</a></li>
+				        
+							<li><a href="http://www.baidu.com">在线简历</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/eric-peng" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/5740859095" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/eric-peng-38" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript基础/" style="font-size: 10px;">javascript基础</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">eric peng</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://tp4.sinaimg.cn/5626580951/180/5728799106/1" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">eric peng</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">我的首页</a></li>
+		        
+					<li><a href="/archives">全部博客</a></li>
+		        
+					<li><a href="http://www.baidu.com">在线简历</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/eric-peng" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/5740859095" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/eric-peng-38" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-javascript理解之闭包" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/10/javascript理解之闭包/" class="article-date">
+  	<time datetime="2015-12-10T12:09:55.000Z" itemprop="datePublished">2015-12-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript理解之闭包
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript基础/">javascript基础</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/闭包/">闭包</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、闭包的概念">一、闭包的概念</h3><p>闭包 是指有权访问另一个函数作用域中的变量的函数，创建闭包的最常见的方式就是在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量。<br><a id="more"></a></p>
+<h3 id="二、闭包的作用">二、闭包的作用</h3><p>闭包可以用在许多地方。它的最大用处有两个，一个是前面提到的可以读取函数内部的变量，另一个就是让这些变量的值始终保持在内存中。</p>
+<h3 id="三、使用闭包的好处">三、使用闭包的好处</h3><ol>
+<li>希望一个变量长期驻扎在内存中</li>
+<li>避免全局变量的污染</li>
+<li>私有成员的存在</li>
+</ol>
+<h3 id="四、闭包的缺点：">四、闭包的缺点：</h3><p>常驻内存，会增大内存使用量，使用不当很容易造成内存泄露。</p>
+<h3 id="五、闭包的原理：">五、闭包的原理：</h3><p>先看一段代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var x = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">foo</span></span>() &#123;</span><br><span class="line">  alert(x); // 自由变量<span class="string">"x"</span> == <span class="number">20</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 为foo闭包</span><br><span class="line">fooClosure = &#123;</span><br><span class="line">  call: foo // 引用到<span class="keyword">function</span></span><br><span class="line">  lexicalEnvironment: &#123;x: <span class="number">20</span>&#125; // 搜索上下文的上下文</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>上述例子中，“fooClosure”部分是伪代码。对应的，在ECMAScript中，“foo”函数已经有了一个内部属性——创建该函数上下文的作用域链。“lexical”通常是省略的。上述例子中是为了强调在闭包创建的同时，上下文的数据就会保存起来。当下次调用该函数的时候，自由变量就可以在保存的（闭包）上下文中找到了。</p>
+<p>对于要实现将局部变量在上下文销毁后仍然保存下来，基于栈的实现显然是不适用的（因为与基于栈的结构相矛盾）。因此在这种情况下，上层作用域的闭包数据是通过 动态分配内存的方式来实现的（基于“堆”的实现）。 </p>
+<h3 id="六、使用闭包">六、使用闭包</h3><ol>
+<li><p>全局变量的累加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">outer</span></span>()&#123;</span><br><span class="line">        var x=<span class="number">10</span>;</span><br><span class="line">        <span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;             //函数嵌套函数</span><br><span class="line">                x++;</span><br><span class="line">                alert(x);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">var y = outer();              //外部函数赋给变量y;</span><br><span class="line">y();                 //y函数调用一次，结果为<span class="number">11</span>，相当于outer()()；</span><br><span class="line">y();                //y函数调用第二次，结果为<span class="number">12</span>，实现了累加</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>模块化代码，减少全局变量的污染</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">var abc = (<span class="function"><span class="title">function</span></span>()&#123;      //abc为外部匿名函数的返回值</span><br><span class="line">        var a = <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">                a++;</span><br><span class="line">                alert(a);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;)();</span><br><span class="line">abc();    //<span class="number">2</span> ；调用一次abc函数，其实是调用里面内部函数的返回值    </span><br><span class="line">abc();    //<span class="number">3</span></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>私有成员的存在</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">var aaa = (<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">        var a = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">function</span> <span class="function"><span class="title">bbb</span></span>()&#123;</span><br><span class="line">                a++;</span><br><span class="line">                alert(a);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">function</span> <span class="function"><span class="title">ccc</span></span>()&#123;</span><br><span class="line">                a++;</span><br><span class="line">                alert(a);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> &#123;</span><br><span class="line">                b:bbb,             //json结构</span><br><span class="line">                c:ccc</span><br><span class="line">        &#125;</span><br><span class="line">&#125;)();</span><br><span class="line">aaa.b();     //<span class="number">2</span></span><br><span class="line">aaa.c()      //<span class="number">3</span></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在循环中直接找到对应元素的索引</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    window.onload = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            var aLi = document.getElementsByTagName(<span class="string">'li'</span>);</span><br><span class="line">            <span class="keyword">for</span> (var i=<span class="number">0</span>;i&lt;aLi.length;i++)&#123;</span><br><span class="line">                    aLi[i].onclick = <span class="function"><span class="title">function</span></span>()&#123;        //当点击时<span class="keyword">for</span>循环已经结束</span><br><span class="line">                    alert(i);</span><br><span class="line">                    &#125;;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">            </span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;<span class="number">123</span>&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;<span class="number">456</span>&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;<span class="number">789</span>&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;<span class="number">010</span>&lt;/li&gt;</span><br><span class="line">     &lt;/ul&gt;                </span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li>使用闭包改写上面代码<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">         window. onload = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">                 var aLi = document.getElementsByTagName(<span class="string">'li'</span>);</span><br><span class="line">                 <span class="keyword">for</span> (var i= <span class="number">0</span>;i &lt; aLi.length;i++)&#123;</span><br><span class="line">                         (<span class="keyword">function</span>(i)&#123;</span><br><span class="line">                                 aLi[i].onclick = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">                                         alert(i);</span><br><span class="line">                                 &#125;;</span><br><span class="line">                         &#125;)(i);</span><br><span class="line">                 &#125;</span><br><span class="line">         &#125;;</span><br><span class="line"> &lt;/script&gt;                   </span><br><span class="line"> &lt;body&gt;</span><br><span class="line">     &lt;ul&gt;</span><br><span class="line">         &lt;li&gt;<span class="number">123</span>&lt;/li&gt;</span><br><span class="line">         &lt;li&gt;<span class="number">456</span>&lt;/li&gt;</span><br><span class="line">         &lt;li&gt;<span class="number">789</span>&lt;/li&gt;</span><br><span class="line">     &lt;/ul&gt;</span><br><span class="line"> &lt;/body&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="七、特别提醒">七、特别提醒</h3><p> <font size="3">(function(){})(i) 中也存在闭包的原因： function(){}是一个函数，(function(){})(i)中也是个函数，函数中嵌套函数，且变量i相对于function(){}是一个函数是上下文变量，会记住i的值。</font></p>
+<h2 id=""></h2>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/10/29/我的静态博客搭建过程/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">我的静态博客搭建过程</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="javascript理解之闭包" data-title="javascript理解之闭包" data-url="http:eric-peng.github.io/2015/12/10/javascript理解之闭包/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"eric-peng"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-right">
+    		&copy; 2015 eric peng
+    	</div>      	
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: undefined,
+		animate: undefined,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: undefined
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+  </div>
+</body>
+</html>

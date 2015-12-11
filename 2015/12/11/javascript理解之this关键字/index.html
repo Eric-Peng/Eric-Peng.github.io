@@ -3,17 +3,39 @@
 <head>
   <meta charset="utf-8">
   
-  <title>eric-peng的博客</title>
+  <title>javascript理解之this关键字 | eric-peng的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="eric-peng的博客">
-<meta property="og:url" content="http:eric-peng.github.io/index.html">
+  <meta name="description" content="this应用场景在《javaScript语言精粹》这本书中，把 this 出现的场景分为四类，简单的说就是：
+
+有对象就指向调用对象
+没调用对象就指向全局对象
+用new构造就指向新对象
+通过 apply 或 call 或 bind 来改变 this 的所指。
+
+js中的this我们要记住：this永远指向函数运行时所在的对象！而不是函数被创建时所在的对象。this对象是在运行时基于函数的执行环境绑">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript理解之this关键字">
+<meta property="og:url" content="http:eric-peng.github.io/2015/12/11/javascript理解之this关键字/index.html">
 <meta property="og:site_name" content="eric-peng的博客">
-<meta property="og:description">
+<meta property="og:description" content="this应用场景在《javaScript语言精粹》这本书中，把 this 出现的场景分为四类，简单的说就是：
+
+有对象就指向调用对象
+没调用对象就指向全局对象
+用new构造就指向新对象
+通过 apply 或 call 或 bind 来改变 this 的所指。
+
+js中的this我们要记住：this永远指向函数运行时所在的对象！而不是函数被创建时所在的对象。this对象是在运行时基于函数的执行环境绑">
+<meta property="og:updated_time" content="2015-12-11T11:48:16.045Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="eric-peng的博客">
-<meta name="twitter:description">
+<meta name="twitter:title" content="javascript理解之this关键字">
+<meta name="twitter:description" content="this应用场景在《javaScript语言精粹》这本书中，把 this 出现的场景分为四类，简单的说就是：
+
+有对象就指向调用对象
+没调用对象就指向全局对象
+用new构造就指向新对象
+通过 apply 或 call 或 bind 来改变 this 的所指。
+
+js中的this我们要记住：this永远指向函数运行时所在的对象！而不是函数被创建时所在的对象。this对象是在运行时基于函数的执行环境绑">
   
   
     <link rel="icon" href="/favicon.png">
@@ -163,9 +185,7 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-javascript理解之this关键字" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-javascript理解之this关键字" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2015/12/11/javascript理解之this关键字/" class="article-date">
@@ -181,12 +201,27 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/11/javascript理解之this关键字/">javascript理解之this关键字</a>
+    <h1 class="article-title" itemprop="name">
+      javascript理解之this关键字
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript基础/">javascript基础</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/this/">this</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -218,280 +253,62 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript基础/">javascript基础</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/this/">this</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/12/11/javascript理解之继承/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">javascript理解之继承</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
   
 </article>
 
 
-
-
-
-
-
-  
-    <article id="post-javascript理解之继承" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/12/11/javascript理解之继承/" class="article-date">
-  	<time datetime="2015-12-11T06:09:55.000Z" itemprop="datePublished">2015-12-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/11/javascript理解之继承/">javascript理解之继承</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="js继承的概念">js继承的概念</h3><p>js里常用的如下两种继承方式：</p>
-<ol>
-<li>原型链继承（对象间的继承）</li>
-<li>类式继承（构造函数间的继承）</li>
-<li>由于js不像java那样是真正面向对象的语言，js是基于对象的，它没有类的概念。所以，要想实现继承，可以用js的原型prototype机制或者用apply和call方法去实现
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript基础/">javascript基础</a></li></ul>
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/继承/">继承</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/12/11/javascript理解之继承/#more">更多 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
 
 
-
-
-
-
-  
-    <article id="post-javascript理解之闭包" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/12/10/javascript理解之闭包/" class="article-date">
-  	<time datetime="2015-12-10T12:09:55.000Z" itemprop="datePublished">2015-12-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/10/javascript理解之闭包/">javascript理解之闭包</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一、闭包的概念">一、闭包的概念</h3><p>闭包 是指有权访问另一个函数作用域中的变量的函数，创建闭包的最常见的方式就是在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量。<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript基础/">javascript基础</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/闭包/">闭包</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/12/10/javascript理解之闭包/#more">更多 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="javascript理解之this关键字" data-title="javascript理解之this关键字" data-url="http:eric-peng.github.io/2015/12/11/javascript理解之this关键字/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"eric-peng"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
 
 
-
-
-
-  
-    <article id="post-我的静态博客搭建过程" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/10/29/我的静态博客搭建过程/" class="article-date">
-  	<time datetime="2015-10-29T11:08:01.315Z" itemprop="datePublished">2015-10-29</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/29/我的静态博客搭建过程/">我的静态博客搭建过程</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>欢迎各位来到我的github博客，希望此博客网站能给大家得到收获，做为第一篇的博客，首先给各位介绍我的博客破壳而出的全过程。<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/hexo/">hexo</a><a class="article-category-link" href="/categories/hexo/静态博客/">静态博客</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/10/29/我的静态博客搭建过程/#more">更多 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/10/29/hello-world/" class="article-date">
-  	<time datetime="2015-10-29T05:16:52.660Z" itemprop="datePublished">2015-10-29</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/29/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="http://hexo.io/">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/10/29/hello-world/#more">更多 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-  
 </div>
       <footer id="footer">
   <div class="outer">
@@ -512,8 +329,8 @@
 		fancybox: true,
 		mathjax: undefined,
 		animate: undefined,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

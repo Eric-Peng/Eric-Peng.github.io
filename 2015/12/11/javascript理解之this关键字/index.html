@@ -3,18 +3,16 @@
 <head>
   <meta charset="utf-8">
   
-  <title>javascript理解之this关键字 | eric-peng的博客</title>
+  <title>javascript理解之this关键字（转） | eric-peng的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this应用场景在《javaScript语言精粹》这本书中，把 this 出现的场景分为四类，简单的说就是：
 
 有对象就指向调用对象
 没调用对象就指向全局对象
 用new构造就指向新对象
-通过 apply 或 call 或 bind 来改变 this 的所指。
-
-js中的this我们要记住：this永远指向函数运行时所在的对象！而不是函数被创建时所在的对象。this对象是在运行时基于函数的执行环境绑">
+通过 apply 或 call 或 bind 来改变 this 的所指。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="javascript理解之this关键字">
+<meta property="og:title" content="javascript理解之this关键字（转）">
 <meta property="og:url" content="http:eric-peng.github.io/2015/12/11/javascript理解之this关键字/index.html">
 <meta property="og:site_name" content="eric-peng的博客">
 <meta property="og:description" content="this应用场景在《javaScript语言精粹》这本书中，把 this 出现的场景分为四类，简单的说就是：
@@ -22,20 +20,16 @@ js中的this我们要记住：this永远指向函数运行时所在的对象！�
 有对象就指向调用对象
 没调用对象就指向全局对象
 用new构造就指向新对象
-通过 apply 或 call 或 bind 来改变 this 的所指。
-
-js中的this我们要记住：this永远指向函数运行时所在的对象！而不是函数被创建时所在的对象。this对象是在运行时基于函数的执行环境绑">
-<meta property="og:updated_time" content="2015-12-11T11:48:16.045Z">
+通过 apply 或 call 或 bind 来改变 this 的所指。">
+<meta property="og:updated_time" content="2015-12-22T05:34:32.003Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="javascript理解之this关键字">
+<meta name="twitter:title" content="javascript理解之this关键字（转）">
 <meta name="twitter:description" content="this应用场景在《javaScript语言精粹》这本书中，把 this 出现的场景分为四类，简单的说就是：
 
 有对象就指向调用对象
 没调用对象就指向全局对象
 用new构造就指向新对象
-通过 apply 或 call 或 bind 来改变 this 的所指。
-
-js中的this我们要记住：this永远指向函数运行时所在的对象！而不是函数被创建时所在的对象。this对象是在运行时基于函数的执行环境绑">
+通过 apply 或 call 或 bind 来改变 this 的所指。">
   
   
     <link rel="icon" href="/favicon.png">
@@ -202,7 +196,7 @@ js中的this我们要记住：this永远指向函数运行时所在的对象！�
         
   
     <h1 class="article-title" itemprop="name">
-      javascript理解之this关键字
+      javascript理解之this关键字（转）
     </h1>
   
 
@@ -231,7 +225,8 @@ js中的this我们要记住：this永远指向函数运行时所在的对象！�
 <li>有对象就指向调用对象</li>
 <li>没调用对象就指向全局对象</li>
 <li>用new构造就指向新对象</li>
-<li>通过 apply 或 call 或 bind 来改变 this 的所指。</li>
+<li>通过 apply 或 call 或 bind 来改变 this 的所指。<a id="more"></a>
+</li>
 </ol>
 <h3 id="js中的this">js中的this</h3><p>我们要记住：this永远指向函数运行时所在的对象！而不是函数被创建时所在的对象。this对象是在运行时基于函数的执行环境绑定的，在全局环境中，this等于window。使用this是因为在实例化对象时，总是不能确定开发者会使用什么样的变量名。使用this，即可在任意多个地方重用同一个函数。考虑下面的例子：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">showColor</span></span>()&#123;</span><br><span class="line">     alert(this.color);</span><br><span class="line">&#125;</span><br><span class="line">var oCar1 = new Object;</span><br><span class="line">oCar1.color = <span class="string">"red"</span>;</span><br><span class="line">oCar1.showColor = showColor;</span><br><span class="line"></span><br><span class="line">var oCar2 = new Object;</span><br><span class="line">oCar2.color = <span class="string">"blue"</span>;</span><br><span class="line">oCar2.showcolor = showcolor;</span><br><span class="line"></span><br><span class="line">oCar1.showColor();//输出<span class="string">"red"</span></span><br><span class="line">oCar2.showColor();//输出<span class="string">"blue"</span></span><br></pre></td></tr></table></figure></p>
 <p>这段代码中，首先用this定义函数showColor()，然后创建两个对象oCar1和oCar2，一个对象属性被设置为”red”,另一个为blue；两个对象都被赋予了属性showColor，指向原始的showColor()函数，调用每个showColor的方法，oCar1输出red，oCar2输出blue。</p>
@@ -249,6 +244,7 @@ js中的this我们要记住：this永远指向函数运行时所在的对象！�
 <p>在许多情况下JQuery的this都指向HTML元素节点。</p>
 <p>结论：<br>this，表示当前的上下文对象是一个html DOM对象，可以调用html对象所拥有的属性，方法。<br>$(this),代表的上下文对象是一个jquery的上下文对象，可以调用jquery的方法和属性值。</p>
 <hr>
+<p>转自：<a href="http://segmentfault.com/u/trigkit4" target="_blank" rel="external">http://segmentfault.com/u/trigkit4</a></p>
 
       
     </div>
@@ -258,9 +254,18 @@ js中的this我们要记住：this永远指向函数运行时所在的对象！�
     
 <nav id="article-nav">
   
+    <a href="/2015/12/22/javascript理解之模块化开发/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          javascript理解之模块化开发(转)
+        
+      </div>
+    </a>
+  
   
     <a href="/2015/12/11/javascript理解之继承/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">javascript理解之继承</div>
+      <div class="article-nav-title">javascript理解之继承（转）</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -289,7 +294,7 @@ js中的this我们要记住：this永远指向函数运行时所在的对象！�
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="javascript理解之this关键字" data-title="javascript理解之this关键字" data-url="http:eric-peng.github.io/2015/12/11/javascript理解之this关键字/"></div>
+	<div class="ds-thread" data-thread-key="javascript理解之this关键字" data-title="javascript理解之this关键字（转）" data-url="http:eric-peng.github.io/2015/12/11/javascript理解之this关键字/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

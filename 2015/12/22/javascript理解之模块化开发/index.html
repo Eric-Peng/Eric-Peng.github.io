@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>javascript理解之模块化开发(转) | eric-peng的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="什么是模块化开发？一个模块就是实现特定功能的文件，有了模块，我们就可以更方便地使用别人的代码，想要什么功能，就加载什么模块。模块开发需要遵循一定的规范，否则就都乱套了。目前，通行的js模块规范主要有两种：CommonJS和AMD。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript理解之模块化开发(转)">
+<meta property="og:url" content="http:eric-peng.github.io/2015/12/22/javascript理解之模块化开发/index.html">
+<meta property="og:site_name" content="eric-peng的博客">
+<meta property="og:description" content="什么是模块化开发？一个模块就是实现特定功能的文件，有了模块，我们就可以更方便地使用别人的代码，想要什么功能，就加载什么模块。模块开发需要遵循一定的规范，否则就都乱套了。目前，通行的js模块规范主要有两种：CommonJS和AMD。">
+<meta property="og:image" content="https://github.com/eric-peng/eric-peng.github.io/blob/master/img/blog/20151222_1.png">
+<meta property="og:updated_time" content="2015-12-22T05:33:56.806Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript理解之模块化开发(转)">
+<meta name="twitter:description" content="什么是模块化开发？一个模块就是实现特定功能的文件，有了模块，我们就可以更方便地使用别人的代码，想要什么功能，就加载什么模块。模块开发需要遵循一定的规范，否则就都乱套了。目前，通行的js模块规范主要有两种：CommonJS和AMD。">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+   
+	<script type="text/javascript"> 
+		var _hmt = _hmt || [];
+			(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "//hm.baidu.com/hm.js?5dba26570846fb50c527e5133d251a7a";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+			})();
+	</script>
+ 
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://tp4.sinaimg.cn/5626580951/180/5728799106/1" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">eric peng</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">我的首页</a></li>
+				        
+							<li><a href="/archives">全部博客</a></li>
+				        
+							<li><a href="http://www.baidu.com">在线简历</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/eric-peng" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/5740859095" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/eric-peng-38" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript基础/" style="font-size: 20px;">javascript基础</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">eric peng</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://tp4.sinaimg.cn/5626580951/180/5728799106/1" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">eric peng</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">我的首页</a></li>
+		        
+					<li><a href="/archives">全部博客</a></li>
+		        
+					<li><a href="http://www.baidu.com">在线简历</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/eric-peng" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/5740859095" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/eric-peng-38" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-javascript理解之模块化开发" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/22/javascript理解之模块化开发/" class="article-date">
+  	<time datetime="2015-12-22T02:08:19.000Z" itemprop="datePublished">2015-12-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript理解之模块化开发(转)
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript基础/">javascript基础</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/模块化/">模块化</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="什么是模块化开发？">什么是模块化开发？</h3><p>一个模块就是实现特定功能的文件，有了模块，我们就可以更方便地使用别人的代码，想要什么功能，就加载什么模块。模块开发需要遵循一定的规范，否则就都乱套了。目前，通行的js模块规范主要有两种：CommonJS和AMD。<br><a id="more"></a></p>
+<h3 id="AMD规范">AMD规范</h3><p>AMD 即Asynchronous Module Definition，中文名是“异步模块定义”的意思。它是一个在浏览器端模块化开发的规范，服务器端的规范是CommonJS模块将被异步加载，模块加载不影响后面语句的运行。所有依赖某些模块的语句均放置在回调函数中。AMD 是 RequireJS 在推广过程中对模块定义的规范化的产出。</p>
+<h3 id="define()_函数">define() 函数</h3><p>AMD规范只定义了一个函数 define，它是全局变量。函数的描述为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">define(id?, dependencies?, factory);</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用_require_和_exports">使用 require 和 exports</h3><p>创建一个名为”alpha”的模块，使用了require，exports，和名为”beta”的模块:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="string">"alpha"</span>, [<span class="string">"require"</span>, <span class="string">"exports"</span>, <span class="string">"beta"</span>], <span class="keyword">function</span> (require, exports, beta) &#123;</span><br><span class="line">      exports.verb = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">          <span class="built_in">return</span> beta.verb();</span><br><span class="line">          //Or:</span><br><span class="line">          <span class="built_in">return</span> require(<span class="string">"beta"</span>).verb();</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>目前，实现AMD的库有RequireJS 、curl 、Dojo 、Nodules 等。</p>
+<h3 id="CommonJS规范">CommonJS规范</h3><p>CommonJS是服务器端模块的规范，Node.js采用了这个规范。Node.JS首先采用了js模块化的概念。根据CommonJS规范，一个单独的文件就是一个模块。每一个模块都是一个单独的作用域，也就是说，在该模块内部定义的变量，无法被其他模块读取，除非定义为global对象的属性。输出模块变量的最好方法是使用module.exports对象。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var i = <span class="number">1</span>;</span><br><span class="line">var max = <span class="number">30</span>;</span><br><span class="line"></span><br><span class="line">module.exports = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">  <span class="keyword">for</span> (i -= <span class="number">1</span>; i++ &lt; max; ) &#123;</span><br><span class="line">    console.log(i);</span><br><span class="line">  &#125;</span><br><span class="line">  max *= <span class="number">1.1</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>上面代码通过module.exports对象，定义了一个函数，该函数就是模块外部与内部通信的桥梁。加载模块使用require方法，该方法读取一个文件并执行，最后返回文件内部的module.exports对象。</p>
+<h3 id="RequireJS和SeaJS">RequireJS和SeaJS</h3><ol>
+<li>RequireJS由James Burke创建，他也是AMD规范的创始人。</li>
+<li>define方法用于定义模块，RequireJS要求每个模块放在一个单独的文件里。</li>
+<li>RequireJS 和 Sea.js 都是模块加载器，倡导模块化开发理念，核心价值是让 JavaScript 的模块化开发变得简单自然。</li>
+</ol>
+<h3 id="SeaJS与RequireJS最大的区别:">SeaJS与RequireJS最大的区别:</h3><p>SeaJS对模块的态度是懒执行, 而RequireJS对模块的态度是预执行<br>不明白？看这篇图文并茂的文章吧：<a href="http://www.douban.com/note/283566440/" target="_blank" rel="external">http://www.douban.com/note/283566440/</a><br>个人推荐requireJs,被依赖的模块必须先于当前模块执行，而没有依赖关系的模块，可以没有先后。假设依赖模块mod1和mod2某天发生了依赖的话，比如在某个版本，mod1依赖了mod2（这是完全有可能的），mod1比mod2先执行。这个时候seajs的懒执行会出现问题。</p>
+<h3 id="为什么要用requireJS">为什么要用requireJS</h3><p>试想一下，如果一个网页有很多的js文件，那么浏览器在下载该页面的时候会先加载js文件，从而停止了网页的渲染，如果文件越多，浏览器可能失去响应。其次，要保证js文件的依赖性，依赖性最大的模块（文件）要放在最后加载，当依赖关系很复杂的时候，代码的编写和维护都会变得困难。</p>
+<p>RequireJS就是为了解决这两个问题而诞生的：</p>
+<ol>
+<li>实现js文件的异步加载，避免网页失去响应；</li>
+<li>管理模块之间的依赖性，便于代码的编写和维护。</li>
+</ol>
+<h3 id="AMD和CMD">AMD和CMD</h3><p>CMD（Common Module Definition） 通用模块定义。该规范明确了模块的基本书写格式和基本交互规则。该规范是在国内发展出来的。AMD是依赖关系前置，CMD是按需加载。<br>在 CMD 规范中，一个模块就是一个文件。代码的书写格式如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">define(factory);</span><br></pre></td></tr></table></figure></p>
+<p>factory 为函数时，表示是模块的构造方法。执行该构造方法，可以得到模块向外提供的接口。factory 方法在执行时，默认会传入三个参数：require、exports 和 module：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="keyword">function</span>(require, exports, module) &#123;</span><br><span class="line"></span><br><span class="line">  // 模块代码</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>require是可以把其他模块导入进来的一个参数，而export是可以把模块内的一些属性和方法导出的。</p>
+<ol>
+<li>AMD 是 RequireJS 在推广过程中对模块定义的规范化产出。</li>
+<li>CMD 是 SeaJS 在推广过程中对模块定义的规范化产出。</li>
+</ol>
+<p>对于依赖的模块，AMD 是提前执行，CMD 是延迟执行。</p>
+<ol>
+<li>AMD:提前执行（异步加载：依赖先执行）+延迟执行</li>
+<li>CMD:延迟执行（运行到需加载，根据顺序执行）</li>
+</ol>
+<p>CMD 推崇依赖就近，AMD 推崇依赖前置。看如下代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// CMD</span><br><span class="line">define(<span class="keyword">function</span>(require, exports, module) &#123;</span><br><span class="line">var a = require(<span class="string">'./a'</span>)</span><br><span class="line">a.doSomething()</span><br><span class="line">// 此处略去 <span class="number">100</span> 行</span><br><span class="line">var b = require(<span class="string">'./b'</span>) // 依赖可以就近书写</span><br><span class="line">b.doSomething()</span><br><span class="line">// ... </span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// AMD 默认推荐的是</span><br><span class="line">define([<span class="string">'./a'</span>, <span class="string">'./b'</span>], <span class="keyword">function</span>(a, b) &#123; // 依赖必须一开始就写好</span><br><span class="line">a.doSomething()</span><br><span class="line">// 此处略去 <span class="number">100</span> 行</span><br><span class="line">b.doSomething()</span><br><span class="line">...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>AMD的优点是：异步并行加载，在AMD的规范下，同时异步加载是不会产生错误的。CMD的机制则不同，这种加载方式会产生错误，如果能规范化模块内容形式，也可以.<br>jquery1.7以上版本会自动模块化，支持AMD模式：主要是使用define函数，sea.js虽然是CommonJS规范，但却使用了define来定义模块<br>define函数和AMD的define类似：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="keyword">function</span>(require, exports, module&#123;</span><br><span class="line"></span><br><span class="line">     //先要载入jQuery的模块</span><br><span class="line"></span><br><span class="line">     var $ = require(<span class="string">'jquery'</span>);</span><br><span class="line"></span><br><span class="line">     //然后将jQuery对象传给插件模块</span><br><span class="line"></span><br><span class="line">     require(<span class="string">'./cookie'</span>)($);</span><br><span class="line"></span><br><span class="line">     //开始使用 $.cookie方法</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="sea-js如何使用？">sea.js如何使用？</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">- 引入sea.js的库</span><br><span class="line"> - 如何变成模块？</span><br><span class="line">      - define</span><br><span class="line"> - <span class="number">3</span>.如何调用模块？</span><br><span class="line">      -exports</span><br><span class="line">      -sea.js.use</span><br><span class="line"> - <span class="number">4</span>.如何依赖模块？</span><br><span class="line">      -require</span><br><span class="line"></span><br><span class="line"> &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">        define(<span class="keyword">function</span> (require,exports,module) &#123;</span><br><span class="line">            //exports : 对外的接口</span><br><span class="line">            //requires : 依赖的接口</span><br><span class="line">            require(<span class="string">'./test.js'</span>);//如果地址是一个模块的话，那么require的返回值就是模块中的exports</span><br><span class="line">        &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="requirejs开发">requirejs开发</h3><p>require.config是用来定义别名的，在paths属性下配置别名。然后通过requirejs(参数一，参数二)；参数一是数组，传入我们需要引用的模块名，第二个参数是个回调函数，回调函数传入一个变量，代替刚才所引入的模块。<br>main.js文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//别名配置</span><br><span class="line">requirejs.config(&#123;</span><br><span class="line">    paths: &#123;</span><br><span class="line">        jquery: <span class="string">'jquery.min'</span> //可以省略.js</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">//引入模块，用变量$表示jquery模块</span><br><span class="line">requirejs([<span class="string">'jquery'</span>], <span class="keyword">function</span> ($) &#123;</span><br><span class="line">    $(<span class="string">'body'</span>).css(<span class="string">'background-color'</span>,<span class="string">'red'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>引入模块也可以只写require()。requirejs通过define()定义模块，定义的参数上同。在此模块内的方法和变量外部是无法访问的，只有通过return返回才行.</p>
+<h3 id="define_模块">define 模块</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">define([<span class="string">'jquery'</span>], <span class="keyword">function</span> ($) &#123;//引入jQuery模块</span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">        add: <span class="keyword">function</span>(x,y)&#123;</span><br><span class="line">            <span class="built_in">return</span> x + y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>将该模块命名为math.js保存。</p>
+<h3 id="main-js引入模块方法">main.js引入模块方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">require([<span class="string">'jquery'</span>,<span class="string">'math'</span>], <span class="keyword">function</span> ($,math) &#123;</span><br><span class="line">    console.log(math.add(<span class="number">10</span>,<span class="number">100</span>));//<span class="number">110</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>AMD推荐的风格通过返回一个对象做为模块对象，CommonJS的风格通过对module.exports或exports的属性赋值来达到暴露模块对象的目的。</p>
+<p>附图：<br><img src="https://github.com/eric-peng/eric-peng.github.io/blob/master/img/blog/20151222_1.png" alt="模块图"></p>
+<p>转自：<a href="http://segmentfault.com/u/trigkit4" target="_blank" rel="external">http://segmentfault.com/u/trigkit4</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/12/11/javascript理解之this关键字/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">javascript理解之this关键字（转）</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="javascript理解之模块化开发" data-title="javascript理解之模块化开发(转)" data-url="http:eric-peng.github.io/2015/12/22/javascript理解之模块化开发/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"eric-peng"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-right">
+    		&copy; 2015 eric peng
+    	</div>      	
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: undefined,
+		animate: undefined,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: undefined
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+  </div>
+</body>
+</html>

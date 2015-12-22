@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>javascript理解之继承 | eric-peng的博客</title>
+  <title>javascript理解之继承（转） | eric-peng的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="js继承的概念js里常用的如下两种继承方式：
 
@@ -11,7 +11,7 @@
 类式继承（构造函数间的继承）
 由于js不像java那样是真正面向对象的语言，js是基于对象的，它没有类的概念。所以，要想实现继承，可以用js的原型prototype机制或者用apply和call方法去实现">
 <meta property="og:type" content="article">
-<meta property="og:title" content="javascript理解之继承">
+<meta property="og:title" content="javascript理解之继承（转）">
 <meta property="og:url" content="http:eric-peng.github.io/2015/12/11/javascript理解之继承/index.html">
 <meta property="og:site_name" content="eric-peng的博客">
 <meta property="og:description" content="js继承的概念js里常用的如下两种继承方式：
@@ -19,9 +19,9 @@
 原型链继承（对象间的继承）
 类式继承（构造函数间的继承）
 由于js不像java那样是真正面向对象的语言，js是基于对象的，它没有类的概念。所以，要想实现继承，可以用js的原型prototype机制或者用apply和call方法去实现">
-<meta property="og:updated_time" content="2015-12-11T10:35:29.111Z">
+<meta property="og:updated_time" content="2015-12-22T05:34:39.903Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="javascript理解之继承">
+<meta name="twitter:title" content="javascript理解之继承（转）">
 <meta name="twitter:description" content="js继承的概念js里常用的如下两种继承方式：
 
 原型链继承（对象间的继承）
@@ -193,7 +193,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      javascript理解之继承
+      javascript理解之继承（转）
     </h1>
   
 
@@ -246,6 +246,7 @@
 <h3 id="组合式继承的小问题">组合式继承的小问题</h3><p>组合式继承是js最常用的继承模式，但组合继承的超类型在使用过程中会被调用两次；一次是创建子类型的时候，另一次是在子类型构造函数的内部。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">function</span> Parent(name)&#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.arr = [<span class="string">'哥哥'</span>,<span class="string">'妹妹'</span>,<span class="string">'父母'</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Parent.prototype.run = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">        <span class="built_in">return</span> this.name;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> Child(name,age)&#123;</span><br><span class="line">        Parent.call(this,age);//第二次调用</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Child.prototype = new Parent();//第一次调用</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
 <p>以上代码是之前的组合继承，那么寄生组合继承，解决了两次调用的问题。</p>
 <h3 id="寄生组合式继承">寄生组合式继承</h3><p>为每一个需要的原型都进行clone.然后返回副本供对象原型指针指向。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">function</span> inheritPrototype(subType,superType)&#123;</span><br><span class="line">        var prototype = obj(superType.prototype);</span><br><span class="line">        prototype.constructor = subType;</span><br><span class="line">        subType = prototype;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">function</span> obj(o)&#123;</span><br><span class="line">        <span class="keyword">function</span> <span class="function"><span class="title">F</span></span>()&#123;&#125;</span><br><span class="line">        F.prototype = o;</span><br><span class="line">        <span class="built_in">return</span> new F();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">function</span> create(parent,<span class="built_in">test</span>)&#123;</span><br><span class="line">        var f = obj(parent.prototype);//创建对象</span><br><span class="line">        f.constructor = <span class="built_in">test</span>;//增强对象</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> Parent(name)&#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.arr = [<span class="string">'brother'</span>,<span class="string">'sister'</span>,<span class="string">'parents'</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Parent.prototype.run = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">        <span class="built_in">return</span> this.name;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> Child(name,age)&#123;</span><br><span class="line">        Parent.call(this,name);</span><br><span class="line">        this.age =age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    inheritPrototype(Parent,Child);//通过这里实现继承</span><br><span class="line"></span><br><span class="line">    var <span class="built_in">test</span> = new Child(<span class="string">'trigkit4'</span>,<span class="number">21</span>);</span><br><span class="line">    test.arr.push(<span class="string">'nephew'</span>);</span><br><span class="line">    console.log(test.arr);//[ <span class="string">'brother'</span>, <span class="string">'sister'</span>, <span class="string">'parents'</span>, <span class="string">'nephew'</span> ]</span><br><span class="line"></span><br><span class="line">    var <span class="built_in">test</span>1 = new Child(<span class="string">'aaaa'</span>,<span class="number">21</span>);</span><br><span class="line">    console.log(<span class="built_in">test</span>1.arr);//[ <span class="string">'brother'</span>, <span class="string">'sister'</span>, <span class="string">'parents'</span> ]</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>转自：<a href="http://segmentfault.com/u/trigkit4" target="_blank" rel="external">http://segmentfault.com/u/trigkit4</a></p>
 
       
     </div>
@@ -259,14 +260,14 @@
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          javascript理解之this关键字
+          javascript理解之this关键字（转）
         
       </div>
     </a>
   
   
     <a href="/2015/12/10/javascript理解之闭包/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">javascript理解之闭包</div>
+      <div class="article-nav-title">javascript理解之闭包（转）</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -295,7 +296,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="javascript理解之继承" data-title="javascript理解之继承" data-url="http:eric-peng.github.io/2015/12/11/javascript理解之继承/"></div>
+	<div class="ds-thread" data-thread-key="javascript理解之继承" data-title="javascript理解之继承（转）" data-url="http:eric-peng.github.io/2015/12/11/javascript理解之继承/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

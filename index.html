@@ -109,7 +109,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript基础/" style="font-size: 20px;">javascript基础</a>
+						<a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript基础/" style="font-size: 20px;">javascript基础</a> <a href="/tags/javascript算法/" style="font-size: 15px;">javascript算法</a>
 					</div>
 				</section>
 				
@@ -165,11 +165,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-javascript理解之模块化开发" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-javascript之算法排序" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/12/22/javascript理解之模块化开发/" class="article-date">
-  	<time datetime="2015-12-22T02:08:19.000Z" itemprop="datePublished">2015-12-22</time>
+      <a href="/2016/01/12/javascript之算法排序/" class="article-date">
+  	<time datetime="2016-01-12T02:59:31.000Z" itemprop="datePublished">2016-01-12</time>
 </a>
     </div>
   
@@ -182,7 +182,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/22/javascript理解之模块化开发/">javascript理解之模块化开发(转)</a>
+      <a class="article-title" href="/2016/01/12/javascript之算法排序/">&#39;javascript之算法查询&#39;</a>
     </h1>
   
 
@@ -191,7 +191,147 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="什么是模块化开发？">什么是模块化开发？</h3><p>一个模块就是实现特定功能的文件，有了模块，我们就可以更方便地使用别人的代码，想要什么功能，就加载什么模块。模块开发需要遵循一定的规范，否则就都乱套了。目前，通行的js模块规范主要有两种：CommonJS和AMD。<br>
+        <h3 id="冒泡排序_–_时间复杂度O(n^2)">冒泡排序 – 时间复杂度O(n^2)</h3><pre><code class="bash">//冒泡排序
+<span class="keyword">function</span> bubbleSort(A) {
+    <span class="keyword">for</span> (var i = <span class="number">0</span>; i &lt; A.length; i++) {
+        var sorted = <span class="literal">true</span>;
+    //注意：内循环是倒着来的
+        <span class="keyword">for</span> (var j = A.length - <span class="number">1</span>; j &gt; i; j--) {
+            <span class="keyword">if</span> (A[j] &lt; A[j - <span class="number">1</span>]) {
+                swap(A, j, j - <span class="number">1</span>);
+                sorted = <span class="literal">false</span>;                   
+            }
+        }
+        <span class="keyword">if</span> (sorted) {
+            <span class="built_in">return</span>;
+        }
+    }
+}
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript算法/">javascript算法</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/算法/">算法</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/01/12/javascript之算法排序/#more">更多 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-javascript之算法查找" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/11/javascript之算法查找/" class="article-date">
+  	<time datetime="2016-01-11T10:38:05.000Z" itemprop="datePublished">2016-01-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/11/javascript之算法查找/">javascript之算法查找</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="入门级算法-线性查找-时间复杂度O(n)">入门级算法-线性查找-时间复杂度O(n)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//线性搜索(入门HelloWorld)</span><br><span class="line">//A为数组，x为要搜索的值</span><br><span class="line"><span class="keyword">function</span> linearSearch(A, x) &#123;</span><br><span class="line">    <span class="keyword">for</span> (var i = <span class="number">0</span>; i &lt; A.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (A[i] == x) &#123;</span><br><span class="line">            <span class="built_in">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript算法/">javascript算法</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/算法/">算法</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/01/11/javascript之算法查找/#more">更多 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-javascript理解之js跨域" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/08/javascript理解之js跨域/" class="article-date">
+  	<time datetime="2016-01-08T07:05:30.000Z" itemprop="datePublished">2016-01-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/08/javascript理解之js跨域/">javascript理解之js跨域</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="什么是跨域？">什么是跨域？</h3><p>概念：只要协议、域名、端口有任何一个不同，都被当作是不同的域。<br>
       
     </div>
     
@@ -204,13 +344,13 @@
 
       
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/模块化/">模块化</a>
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/js跨域/">js跨域</a>
 	</div>
 
 
       
         <p class="article-more-link">
-          <a  href="/2015/12/22/javascript理解之模块化开发/#more">更多 >></a>
+          <a  href="/2016/01/08/javascript理解之js跨域/#more">更多 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -227,11 +367,11 @@
 
 
   
-    <article id="post-javascript理解之this关键字" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-javascript理解之变量、作用域" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/12/11/javascript理解之this关键字/" class="article-date">
-  	<time datetime="2015-12-11T12:09:55.000Z" itemprop="datePublished">2015-12-11</time>
+      <a href="/2016/01/08/javascript理解之变量、作用域/" class="article-date">
+  	<time datetime="2016-01-08T03:36:24.000Z" itemprop="datePublished">2016-01-08</time>
 </a>
     </div>
   
@@ -244,7 +384,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/11/javascript理解之this关键字/">javascript理解之this关键字（转）</a>
+      <a class="article-title" href="/2016/01/08/javascript理解之变量、作用域/">javascript理解之变量、作用域</a>
     </h1>
   
 
@@ -253,12 +393,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="this应用场景">this应用场景</h3><p>在《javaScript语言精粹》这本书中，把 this 出现的场景分为四类，简单的说就是：</p>
-<ol>
-<li>有对象就指向调用对象</li>
-<li>没调用对象就指向全局对象</li>
-<li>用new构造就指向新对象</li>
-<li>通过 apply 或 call 或 bind 来改变 this 的所指。
+        <p>基本类型值有：undefined，NUll，Boolean，Number和String，这些类型分别在内存中占有固定的大小空间，他们的值保存在栈空间，我们通过按值来访问的。</p>
+<p>（1）值类型：数值、布尔值、null、undefined。<br>（2）引用类型：对象、数组、函数。<br>
       
     </div>
     
@@ -271,13 +407,13 @@
 
       
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/this/">this</a>
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/变量/">变量</a><a class="article-category-link" href="/categories/javascript/变量/作用域/">作用域</a>
 	</div>
 
 
       
         <p class="article-more-link">
-          <a  href="/2015/12/11/javascript理解之this关键字/#more">更多 >></a>
+          <a  href="/2016/01/08/javascript理解之变量、作用域/#more">更多 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -294,11 +430,11 @@
 
 
   
-    <article id="post-javascript理解之继承" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-javascript理解之事件详解" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/12/11/javascript理解之继承/" class="article-date">
-  	<time datetime="2015-12-11T06:09:55.000Z" itemprop="datePublished">2015-12-11</time>
+      <a href="/2016/01/07/javascript理解之事件详解/" class="article-date">
+  	<time datetime="2016-01-07T13:03:45.000Z" itemprop="datePublished">2016-01-07</time>
 </a>
     </div>
   
@@ -311,7 +447,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/11/javascript理解之继承/">javascript理解之继承（转）</a>
+      <a class="article-title" href="/2016/01/07/javascript理解之事件详解/">javascript理解之事件详解</a>
     </h1>
   
 
@@ -320,11 +456,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="js继承的概念">js继承的概念</h3><p>js里常用的如下两种继承方式：</p>
-<ol>
-<li>原型链继承（对象间的继承）</li>
-<li>类式继承（构造函数间的继承）</li>
-<li>由于js不像java那样是真正面向对象的语言，js是基于对象的，它没有类的概念。所以，要想实现继承，可以用js的原型prototype机制或者用apply和call方法去实现
+        <h3 id="事件冒泡与捕获">事件冒泡与捕获</h3><p><img src="/img/blog/20160107_5.png" alt="事件冒泡与捕获"><br>
       
     </div>
     
@@ -337,13 +469,13 @@
 
       
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/继承/">继承</a>
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/事件/">事件</a>
 	</div>
 
 
       
         <p class="article-more-link">
-          <a  href="/2015/12/11/javascript理解之继承/#more">更多 >></a>
+          <a  href="/2016/01/07/javascript理解之事件详解/#more">更多 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -360,11 +492,11 @@
 
 
   
-    <article id="post-javascript理解之闭包" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-javascript理解之正则表达式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/12/10/javascript理解之闭包/" class="article-date">
-  	<time datetime="2015-12-10T12:09:55.000Z" itemprop="datePublished">2015-12-10</time>
+      <a href="/2016/01/07/javascript理解之正则表达式/" class="article-date">
+  	<time datetime="2016-01-07T11:53:41.000Z" itemprop="datePublished">2016-01-07</time>
 </a>
     </div>
   
@@ -377,7 +509,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/10/javascript理解之闭包/">javascript理解之闭包（转）</a>
+      <a class="article-title" href="/2016/01/07/javascript理解之正则表达式/">javascript理解之正则表达式</a>
     </h1>
   
 
@@ -386,7 +518,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="一、闭包的概念">一、闭包的概念</h3><p>闭包 是指有权访问另一个函数作用域中的变量的函数，创建闭包的最常见的方式就是在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量。<br>
+        <h3 id="基本概念">基本概念</h3><p>正则表达式是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为“元字符”）。模式描述在搜索文本时要匹配的一个或多个字符串。<br>
       
     </div>
     
@@ -399,13 +531,13 @@
 
       
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/闭包/">闭包</a>
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/正则表达式/">正则表达式</a>
 	</div>
 
 
       
         <p class="article-more-link">
-          <a  href="/2015/12/10/javascript理解之闭包/#more">更多 >></a>
+          <a  href="/2016/01/07/javascript理解之正则表达式/#more">更多 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -422,11 +554,11 @@
 
 
   
-    <article id="post-我的静态博客搭建过程" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-javascript理解之Ajax和Http状态字" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/10/29/我的静态博客搭建过程/" class="article-date">
-  	<time datetime="2015-10-29T11:08:01.315Z" itemprop="datePublished">2015-10-29</time>
+      <a href="/2016/01/07/javascript理解之Ajax和Http状态字/" class="article-date">
+  	<time datetime="2016-01-07T10:19:02.000Z" itemprop="datePublished">2016-01-07</time>
 </a>
     </div>
   
@@ -439,7 +571,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/29/我的静态博客搭建过程/">我的静态博客搭建过程</a>
+      <a class="article-title" href="/2016/01/07/javascript理解之Ajax和Http状态字/">javascript理解之Ajax和Http状态字</a>
     </h1>
   
 
@@ -448,7 +580,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>欢迎各位来到我的github博客，希望此博客网站能给大家得到收获，做为第一篇的博客，首先给各位介绍我的博客破壳而出的全过程。<br>
+        <h3 id="Ajax及其工作原理">Ajax及其工作原理</h3><p>AJAX 是一种与服务器交换数据无需刷新网页的技术。</p>
+<p><img src="/img/blog/20160107_1.jpg" alt="AJAX工作原理"><br>
       
     </div>
     
@@ -456,18 +589,18 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript基础/">javascript基础</a></li></ul>
 	</div>
 
       
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/hexo/">hexo</a><a class="article-category-link" href="/categories/hexo/静态博客/">静态博客</a>
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/Ajax，Http/">Ajax，Http</a>
 	</div>
 
 
       
         <p class="article-more-link">
-          <a  href="/2015/10/29/我的静态博客搭建过程/#more">更多 >></a>
+          <a  href="/2016/01/07/javascript理解之Ajax和Http状态字/#more">更多 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -484,11 +617,11 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-javascript理解之json" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/10/29/hello-world/" class="article-date">
-  	<time datetime="2015-10-29T05:16:52.660Z" itemprop="datePublished">2015-10-29</time>
+      <a href="/2016/01/07/javascript理解之json/" class="article-date">
+  	<time datetime="2016-01-07T10:08:30.000Z" itemprop="datePublished">2016-01-07</time>
 </a>
     </div>
   
@@ -501,7 +634,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/29/hello-world/">Hello World</a>
+      <a class="article-title" href="/2016/01/07/javascript理解之json/">javascript理解之json</a>
     </h1>
   
 
@@ -510,19 +643,27 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="http://hexo.io/">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h3 id="什么是JSON">什么是JSON</h3><p>JSON：JavaScript 对象表示法（JavaScript Object Notation）。</p>
+<p>JSON的形式是用大括号“{}”包围起来的项目列表，每一个项目间用逗号（,）分隔，而项目就是用冒号（:）分隔的属性名和属性值。这是典型的字典表示形式，也再次表明javascript里的对象就是字典结构。不管多么复杂的对象，都可以用一句JSON代码来创建并赋值。在JSON中，名称/值对 包括字段名称（在双引号中），后面写一个冒号，然后是值。<br>
       
     </div>
     
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript基础/">javascript基础</a></li></ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/json/">json</a>
+	</div>
+
 
       
         <p class="article-more-link">
-          <a  href="/2015/10/29/hello-world/#more">更多 >></a>
+          <a  href="/2016/01/07/javascript理解之json/#more">更多 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -539,13 +680,141 @@
 
 
   
+    <article id="post-javascript理解之function函数部分" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/07/javascript理解之function函数部分/" class="article-date">
+  	<time datetime="2016-01-07T08:54:13.000Z" itemprop="datePublished">2016-01-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/07/javascript理解之function函数部分/">javascript理解之function函数部分</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="函数的概念：">函数的概念：</h3><p>函数是由事件驱动的或者当它被调用时执行的可重复使用的代码块。<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript基础/">javascript基础</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/函数/">函数</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/01/07/javascript理解之function函数部分/#more">更多 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-javascript理解之bom与dom" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/07/javascript理解之bom与dom/" class="article-date">
+  	<time datetime="2016-01-07T08:37:38.000Z" itemprop="datePublished">2016-01-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/07/javascript理解之bom与dom/">javascript理解之Bom与Dom</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="DOM介绍">DOM介绍</h3><p>D（文档）可以理解为整个Web加载的网页文档，O（对象）可以理解为类似window对象只来的东西，可以调用属性和方法，这里我们说的是document对象，M（模型）可以理解为网页文档的树形结构，DOM树由节点构成<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript基础/">javascript基础</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/Bom/">Bom</a><a class="article-category-link" href="/categories/javascript/Bom/Dom/">Dom</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/01/07/javascript理解之bom与dom/#more">更多 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </div>
       <footer id="footer">
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-right">
-    		&copy; 2015 eric peng
+    		&copy; 2016 eric peng
     	</div>      	
     </div>
   </div>

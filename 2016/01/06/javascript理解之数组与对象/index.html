@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>javascript理解之数组与对象 | eric-peng的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="对象部分Object 是一个无序的集合，可以存放任意类型对象，所有其他对象都继承自这个对象。
+创建Object类型有两种，一种是使用new运算符，一种是字面量表示法。
+
+a.  使用new运算符创建Object
+1var obj = new Object();//注意大写，也可以直接写成Object()">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript理解之数组与对象">
+<meta property="og:url" content="http:eric-peng.github.io/2016/01/06/javascript理解之数组与对象/index.html">
+<meta property="og:site_name" content="eric-peng的博客">
+<meta property="og:description" content="对象部分Object 是一个无序的集合，可以存放任意类型对象，所有其他对象都继承自这个对象。
+创建Object类型有两种，一种是使用new运算符，一种是字面量表示法。
+
+a.  使用new运算符创建Object
+1var obj = new Object();//注意大写，也可以直接写成Object()">
+<meta property="og:updated_time" content="2016-01-06T14:09:02.070Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript理解之数组与对象">
+<meta name="twitter:description" content="对象部分Object 是一个无序的集合，可以存放任意类型对象，所有其他对象都继承自这个对象。
+创建Object类型有两种，一种是使用new运算符，一种是字面量表示法。
+
+a.  使用new运算符创建Object
+1var obj = new Object();//注意大写，也可以直接写成Object()">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+   
+	<script type="text/javascript"> 
+		var _hmt = _hmt || [];
+			(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "//hm.baidu.com/hm.js?5dba26570846fb50c527e5133d251a7a";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+			})();
+	</script>
+ 
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://tp4.sinaimg.cn/5626580951/180/5728799106/1" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">eric peng</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">我的首页</a></li>
+				        
+							<li><a href="/archives">全部博客</a></li>
+				        
+							<li><a href="http://www.baidu.com">在线简历</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/eric-peng" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/5740859095" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/eric-peng-38" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript基础/" style="font-size: 20px;">javascript基础</a> <a href="/tags/javascript算法/" style="font-size: 15px;">javascript算法</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">eric peng</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://tp4.sinaimg.cn/5626580951/180/5728799106/1" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">eric peng</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">我的首页</a></li>
+		        
+					<li><a href="/archives">全部博客</a></li>
+		        
+					<li><a href="http://www.baidu.com">在线简历</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/eric-peng" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/5740859095" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/eric-peng-38" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-javascript理解之数组与对象" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/06/javascript理解之数组与对象/" class="article-date">
+  	<time datetime="2016-01-06T12:47:22.000Z" itemprop="datePublished">2016-01-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript理解之数组与对象
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript基础/">javascript基础</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/数组，对象/">数组，对象</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="对象部分">对象部分</h3><h4 id="Object_是一个无序的集合，可以存放任意类型对象，所有其他对象都继承自这个对象。">Object 是一个无序的集合，可以存放任意类型对象，所有其他对象都继承自这个对象。</h4><ol>
+<li>创建Object类型有两种，一种是使用new运算符，一种是字面量表示法。</li>
+</ol>
+<p>a.  使用new运算符创建Object</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var obj = new Object();//注意大写，也可以直接写成Object()</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>注意，通过new Object() 的写法生成新对象，与字面量的写法 obj = {} 是等价的。</p>
+<p>b.  使用字面量方式创建：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">    name : <span class="string">'trigkit4'</span>,</span><br><span class="line">    age : <span class="number">21</span></span><br><span class="line">&#125;;//分号最好加上</span><br></pre></td></tr></table></figure></p>
+<p>在使用字面量声明Object对象时，不会调用Object()构造函数（FF除外）</p>
+<p>对象只是一种特殊的数据。对象拥有属性和方法。 JavaScript 是面向对象的语言，但 JavaScript 不使用类。 JavaScript 基于 [prototype][1]，而不是基于类的。</p>
+<h4 id="JavaScript面向对象三大特征">JavaScript面向对象三大特征</h4><p>封装：不考虑内部实现，只考虑功能使用<br>继承：从已有对象上，继承出新的对象<br>多态：所谓多态，就是指一个引用在不同情况下的多种状态，</p>
+<p>1.封装</p>
+<p>封装就是要把属于同一类事物的共性(包括属性与行为)归到一个类中,以方便使用.比如人这个东东,可用下面的方式封装<br>封装的好处：<br>封装保护了内部数据的完整性；<br>封装使对象的重构更轻松；<br>弱化模块间的耦合，提高对象的可重用性；<br>有助于避免命名空间冲突；</p>
+<h4 id="构造函数模式">构造函数模式</h4><p>为了解决从原型对象生成实例的问题，Javascript提供了一个构造函数（Constructor）模式。所谓”构造函数”，其实就是一个普通函数，但是内部使用了this变量。对构造函数使用new运算符，就能生成实例，并且this变量会绑定在实例对象上。比如boy和girl的原型对象现在就可以这样写：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;  </span><br><span class="line">        <span class="keyword">function</span> Person(name,age)&#123;</span><br><span class="line">                this.name = name;</span><br><span class="line">                this.age = age;</span><br><span class="line">        &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>我们现在就可以生成实例对象了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;  </span><br><span class="line">        var boy = new Person(<span class="string">"小明"</span>,<span class="number">12</span>)；</span><br><span class="line">        var girl = new Person(<span class="string">"小红"</span>,<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">        alert(boy.name);  //小明</span><br><span class="line">        alert(boy.age);   //<span class="number">12</span></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>这时boy和girl会自动含有一个constructor属性，指向它们的构造函数。<br>　<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alert(boy.constructor == Person); //<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">alert(girl.constructor); //输出整串构造函数代码，自己试试吧</span><br></pre></td></tr></table></figure></p>
+<h4 id="对象字面量">对象字面量</h4><p>对象字面量是用于创建包含大量属性的过程，如下所示：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    var company = &#123;</span><br><span class="line">        name : <span class="string">"Microsoft"</span>,</span><br><span class="line">        ages : <span class="number">39</span>,</span><br><span class="line">        employees : <span class="number">99000</span>,</span><br><span class="line">        CEO : <span class="string">"Nadella"</span></span><br><span class="line">    &#125;;     </span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>这里需要注意的是属性和属性值以冒号(:)隔开；多个属性用逗号(,)隔开。对象字面量亦可以定义方法，只需在这个对象的属性上写上function就行，这是一个匿名函数，调用它只需要写上他的方法名()即可。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">var dog = &#123;</span><br><span class="line">   name:<span class="string">"husky"</span>,</span><br><span class="line">   age:<span class="number">2</span>,</span><br><span class="line">   run:<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">              <span class="built_in">return</span> <span class="string">"123"</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">alert(dog.run());//如果输入dog.run,那么会弹出它后面的<span class="keyword">function</span>部分的代码</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="数组部分">数组部分</h3><p>Array 对象：提供对创建任何数据类型的数组的支持。<br>定义：var arr = [2,3,45,6]; var arr = new Array(2,4,5,7)<br>两者是定义没有任何差别，[]的性能高，因为代码短。</p>
+<p>使用数组和对象字面量：var aTest = []；创建数组时，使用数组字面量是个好选择；类似的，对象字面量也可用于节省空间。以下两行是相等的，但是使用对象字面量的更加简短：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var oTest = new Object;  //尽量不用</span><br><span class="line">var oTest = &#123; &#125;;    //最好的选择，或者var <span class="number">0</span>Test = [ ];</span><br></pre></td></tr></table></figure></p>
+<p> 原文参考：<a href="http://segmentfault.com/a/1190000000653028" target="_blank" rel="external">http://segmentfault.com/a/1190000000653028</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/07/javascript理解之bom与dom/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          javascript理解之Bom与Dom
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/22/javascript理解之模块化开发/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">javascript理解之模块化开发</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="javascript理解之数组与对象" data-title="javascript理解之数组与对象" data-url="http:eric-peng.github.io/2016/01/06/javascript理解之数组与对象/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"eric-peng"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-right">
+    		&copy; 2016 eric peng
+    	</div>      	
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: undefined,
+		animate: undefined,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: undefined
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+  </div>
+</body>
+</html>

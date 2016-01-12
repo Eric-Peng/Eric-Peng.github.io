@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>javascript理解之事件详解 | eric-peng的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="事件冒泡与捕获">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript理解之事件详解">
+<meta property="og:url" content="http:eric-peng.github.io/2016/01/07/javascript理解之事件详解/index.html">
+<meta property="og:site_name" content="eric-peng的博客">
+<meta property="og:description" content="事件冒泡与捕获">
+<meta property="og:image" content="http:eric-peng.github.io/img/blog/20160107_5.png">
+<meta property="og:updated_time" content="2016-01-07T13:44:50.691Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript理解之事件详解">
+<meta name="twitter:description" content="事件冒泡与捕获">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+   
+	<script type="text/javascript"> 
+		var _hmt = _hmt || [];
+			(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "//hm.baidu.com/hm.js?5dba26570846fb50c527e5133d251a7a";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+			})();
+	</script>
+ 
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://tp4.sinaimg.cn/5626580951/180/5728799106/1" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">eric peng</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">我的首页</a></li>
+				        
+							<li><a href="/archives">全部博客</a></li>
+				        
+							<li><a href="http://www.baidu.com">在线简历</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/eric-peng" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/5740859095" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/eric-peng-38" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript基础/" style="font-size: 20px;">javascript基础</a> <a href="/tags/javascript算法/" style="font-size: 15px;">javascript算法</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">eric peng</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://tp4.sinaimg.cn/5626580951/180/5728799106/1" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">eric peng</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">我的首页</a></li>
+		        
+					<li><a href="/archives">全部博客</a></li>
+		        
+					<li><a href="http://www.baidu.com">在线简历</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/eric-peng" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/5740859095" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/eric-peng-38" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-javascript理解之事件详解" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/07/javascript理解之事件详解/" class="article-date">
+  	<time datetime="2016-01-07T13:03:45.000Z" itemprop="datePublished">2016-01-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript理解之事件详解
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript基础/">javascript基础</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/事件/">事件</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="事件冒泡与捕获">事件冒泡与捕获</h3><p><img src="/img/blog/20160107_5.png" alt="事件冒泡与捕获"><br><a id="more"></a></p>
+<h3 id="事件冒泡的好处">事件冒泡的好处</h3><p>因为事件具有冒泡机制，因此我们可以利用冒泡的原理，把事件加到父级上，触发执行效果。这样做的好处当然就是提高性能了，<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;head lang=<span class="string">"en"</span>&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">        window.onload = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">            var aUl = document.getElementsById(<span class="string">"bubble"</span>);</span><br><span class="line">            var aLi = aUl.getElementsByTagName(<span class="string">"li"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(var i = <span class="number">0</span>;i&lt;aLi.length;i++)&#123;</span><br><span class="line">                aLi[i].onmouseover = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">                    this.style.backgroundColor = <span class="string">"blue"</span>;</span><br><span class="line">                &#125;;</span><br><span class="line">                ali[i].onmouseout = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">                    this.style.backgroundColor = <span class="string">""</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;ul id = <span class="string">"bubble"</span>&gt;</span><br><span class="line">        &lt;li&gt;<span class="number">1</span>&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;<span class="number">2</span>&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;<span class="number">3</span>&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;<span class="number">4</span>&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></p>
+<p>这样我们就可以做到li上面添加鼠标事件。但是如果说我们可能有很多个li用for循环的话就比较影响性能。</p>
+<p>下面我们可以用事件委托的方式来实现这样的效果。html不变:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    window.onload = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">        var aUl = document.getElementsById(<span class="string">"bubble"</span>);</span><br><span class="line">        var aLi = aUl.getElementsByTagName(<span class="string">"li"</span>);</span><br><span class="line"></span><br><span class="line">        //不管在哪个事件中，只要你操作的那个元素就是事件源。</span><br><span class="line">        // ie：window.event.srcElement</span><br><span class="line">        // 标准下:event.target</span><br><span class="line">        aUl.onmouseover = <span class="keyword">function</span> (ev) &#123;</span><br><span class="line">            var ev = ev || window.event;</span><br><span class="line">            var target = ev.target || ev.srcElement;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(target.nodeName.toLowerCase() == <span class="string">"li"</span>)&#123;</span><br><span class="line">                target.style.background = <span class="string">"blue"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        aUl.onmouseout = <span class="keyword">function</span> (ev) &#123;</span><br><span class="line">            var ev = ev || window.event;</span><br><span class="line">            var target = ev.target || ev.srcElement;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(target.nodeName.toLowerCase() = <span class="string">"li"</span>)&#123;</span><br><span class="line">                target.style.background = <span class="string">""</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>那么，如何阻止事件的冒泡呢，看下面一个例子：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;div onclick=<span class="string">"showMsg(this,event)"</span> id=<span class="string">"outSide"</span> style=<span class="string">"width:100px; height:100px; background:#000; padding:50px"</span>&gt;</span><br><span class="line">&lt;div onclick=<span class="string">"showMsg(this,event)"</span> id=<span class="string">"inSide"</span> style=<span class="string">"width:100px; height:100px; background:#CCC"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">//阻止事件冒泡后，你点击灰色盒子，整个过程只弹一次对话框了（注意与默认情况对比）</span><br><span class="line"><span class="keyword">function</span> showMsg(obj,e)</span><br><span class="line">&#123;</span><br><span class="line">    alert(obj.id);</span><br><span class="line">    stopBubble(e)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//阻止事件冒泡函数</span><br><span class="line"><span class="keyword">function</span> stopBubble(e)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (e &amp;&amp; e.stopPropagation)</span><br><span class="line">        e.stopPropagation()</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        window.event.cancelBubble=<span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="事件对象">事件对象</h3><p>在触发DOM上的某个事件时，会产生一个事件对象event，这个对象包含着所有与事件相关的信息。包括导致事件的元素、事件的类型以及其他与特定事件相关的信息。event对象会被作为第一个参数传递给事件监听的回调函数。</p>
+<p>我们可以通过这个event对象来获取到大量当前事件相关的信息：</p>
+<ol>
+<li>type (String) — 事件的名称</li>
+<li>target (node) — 事件起源的DOM节点</li>
+<li>currentTarget?(node) — 当前回调函数被触发的DOM节点（后面会做比较详细的介绍）</li>
+<li>bubbles (boolean) — 指明这个事件是否是一个冒泡事件（接下来会做解释）</li>
+<li>preventDefault(function) — 这个方法将阻止浏览器中用户代理对当前事件的相关默认行为被触发。比如阻止a元素的click事件加载一个新的页面</li>
+<li>cancelable (boolean) — 这个变量指明这个事件的默认行为是否可以通过调用event.preventDefault来阻止。</li>
+<li>stopPropagation (function) — 取消事件的进一步捕获或冒泡，bubbles为true使用这个方法</li>
+<li>eventPhase：返回一个数字，表示事件目前所处的阶段，0为事件开始从DOM表层向目标元素传播，1为捕获阶段，2为事件到达目标元素，3为冒泡阶段。</li>
+</ol>
+<p>此外，事件对象还可能拥有很多其他的属性，但是他们都是针对特定的event的。比如，鼠标事件包含clientX和clientY属性来表明鼠标在当前视窗的位置。</p>
+<p>另外，stopPropagation()方法用于立即停止事件在DOM中的传播，即取消进一步的事件冒泡或捕获。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var btn = document.getElementById(<span class="string">'myDiv'</span>);</span><br><span class="line">btn.onclick = <span class="keyword">function</span> (event) &#123;</span><br><span class="line">    alert(<span class="string">"clicked"</span>);</span><br><span class="line">    event.stopPropagation();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//避免触发在document.body上的事件处理程序</span><br><span class="line">document.body.onclick = <span class="keyword">function</span> (event) &#123;</span><br><span class="line">    alert(<span class="string">"Body clicked"</span>);  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>只有在事件处理程序执行期间，event对象才会存在，一旦事件处理程序执行完毕，event对象就会自动销毁。</p>
+<h3 id="click事件">click事件</h3><p>当用户点击以后，event对象会包含以下属性。</p>
+<ol>
+<li>pageX，pageY：点击位置相对于html元素的坐标，单位为像素。</li>
+<li>clientX，clientY：点击位置相对于视口（viewport）的坐标，单位为像素。</li>
+<li>screenX，screenY：点击位置相对于设备显示屏幕的坐标，单位为设备硬件的像素</li>
+</ol>
+<h3 id="焦点事件">焦点事件</h3><p>焦点事件会在页面元素获得或失去焦点时触发，有以下4个焦点事件：</p>
+<ol>
+<li>blur：元素失去焦点时触发，该事件不冒泡</li>
+<li>focus：元素获得焦点时触发。不冒泡</li>
+<li>focusin：元素获得焦点时触发，冒泡</li>
+<li>focusout：元素失去焦点时触发，冒泡</li>
+</ol>
+<p>鼠标事件</p>
+<ol>
+<li><p>click：当用户点击鼠标主键通常是指鼠标左键或按回车键时触发。</p>
+</li>
+<li><p>dbclick：用户双击鼠标时触发</p>
+</li>
+<li><p>mousedown：当用户按下鼠标任意一个键都会触发，这个事件是不能够通过键盘触发的。</p>
+</li>
+<li><p>mousemove：当鼠标在某元素周围移动时重复触发，该事件不能通过键盘事件触发。</p>
+</li>
+<li><p>mouseout：当鼠标离开元素时触发，这个事件不能通过键盘触发。</p>
+</li>
+<li><p>mouseover：当鼠标进入元素时触发，这个事件不能够通过键盘触发。</p>
+</li>
+<li><p>mouseenter：类似“mouseover”，但不冒泡，而且当光标移到后代元素上不会触发。 </p>
+</li>
+<li><p>mouseleave：类似“mouseout”，但不冒泡。在元素上方是不触发。</p>
+</li>
+<li><p>mouseup：当用户释放鼠标按键时触发，不能够通过键盘触发。</p>
+</li>
+</ol>
+<p>文章参考：<a href="http://segmentfault.com/a/1190000002174034" target="_blank" rel="external">http://segmentfault.com/a/1190000002174034</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/08/javascript理解之变量、作用域/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          javascript理解之变量、作用域
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/07/javascript理解之正则表达式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">javascript理解之正则表达式</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="javascript理解之事件详解" data-title="javascript理解之事件详解" data-url="http:eric-peng.github.io/2016/01/07/javascript理解之事件详解/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"eric-peng"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-right">
+    		&copy; 2016 eric peng
+    	</div>      	
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: undefined,
+		animate: undefined,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: undefined
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+  </div>
+</body>
+</html>

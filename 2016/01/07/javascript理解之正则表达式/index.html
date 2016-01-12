@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>javascript理解之正则表达式 | eric-peng的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="基本概念正则表达式是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为“元字符”）。模式描述在搜索文本时要匹配的一个或多个字符串。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript理解之正则表达式">
+<meta property="og:url" content="http:eric-peng.github.io/2016/01/07/javascript理解之正则表达式/index.html">
+<meta property="og:site_name" content="eric-peng的博客">
+<meta property="og:description" content="基本概念正则表达式是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为“元字符”）。模式描述在搜索文本时要匹配的一个或多个字符串。">
+<meta property="og:image" content="http:eric-peng.github.io/img/blog/20160107_3.png">
+<meta property="og:image" content="http:eric-peng.github.io/img/blog/20160107_4.png">
+<meta property="og:updated_time" content="2016-01-07T12:35:11.987Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript理解之正则表达式">
+<meta name="twitter:description" content="基本概念正则表达式是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为“元字符”）。模式描述在搜索文本时要匹配的一个或多个字符串。">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+   
+	<script type="text/javascript"> 
+		var _hmt = _hmt || [];
+			(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "//hm.baidu.com/hm.js?5dba26570846fb50c527e5133d251a7a";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+			})();
+	</script>
+ 
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://tp4.sinaimg.cn/5626580951/180/5728799106/1" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">eric peng</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">我的首页</a></li>
+				        
+							<li><a href="/archives">全部博客</a></li>
+				        
+							<li><a href="http://www.baidu.com">在线简历</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/eric-peng" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/5740859095" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/eric-peng-38" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript基础/" style="font-size: 20px;">javascript基础</a> <a href="/tags/javascript算法/" style="font-size: 15px;">javascript算法</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">eric peng</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://tp4.sinaimg.cn/5626580951/180/5728799106/1" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">eric peng</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">我的首页</a></li>
+		        
+					<li><a href="/archives">全部博客</a></li>
+		        
+					<li><a href="http://www.baidu.com">在线简历</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/eric-peng" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/5740859095" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/eric-peng-38" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-javascript理解之正则表达式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/07/javascript理解之正则表达式/" class="article-date">
+  	<time datetime="2016-01-07T11:53:41.000Z" itemprop="datePublished">2016-01-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript理解之正则表达式
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript基础/">javascript基础</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/正则表达式/">正则表达式</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="基本概念">基本概念</h3><p>正则表达式是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为“元字符”）。模式描述在搜索文本时要匹配的一个或多个字符串。<br><a id="more"></a><br>正则表达式是一种查找以及字符串替换操作。正则表达式在文本编辑器中广泛使用，比如正则表达式被用于：</p>
+<ol>
+<li>检查文本中是否含有指定的特征词</li>
+<li>找出文中匹配特征词的位置</li>
+<li>从文本中提取信息，比如：字符串的子串</li>
+<li>修改文本</li>
+</ol>
+<h3 id="字符类匹配">字符类匹配</h3><p><img src="/img/blog/20160107_3.png" alt="字符类匹配"><br>重复字符匹配<br><img src="/img/blog/20160107_4.png" alt="重复字符匹配"></p>
+<h3 id="正则表达式修饰符">正则表达式修饰符</h3><p>字符含义<br>i   执行不区分大小写的匹配<br>g   执行一个全局匹配，即找到所有匹配而非一次匹配<br>m   多行匹配模式，^匹配一行的开头和字符串开头，$匹配行的结束和字符串的结尾</p>
+<p>说明：正则表达式通常用于两种任务：1.验证，2.搜索/替换。用于验证时，通常需要在前后分别加上^和$，以匹配整个待验证字符串；搜索/替换时是否加上此限定则根据搜索的要求而定，此外，也有可能要在前后加上\b而不是^和$。此表所列的常用正则表达式，除个别外均未在前后加上任何限定，请根据需要，自行处理。</p>
+<h3 id="RegExp的方法">RegExp的方法</h3><p>RegExp 对象有 3 个方法：test()、exec() 以及 compile()。</p>
+<ol>
+<li>test()：检索字符串中的指定值。返回值是布尔值。</li>
+<li>exec()：返回一个数组，数组中的第一个条目是第一个匹配，其他的是反向引用</li>
+<li>compile() 既可以改变检索模式，也可以添加或删除第二个参数。 </li>
+</ol>
+<h3 id="建立正则表达式">建立正则表达式</h3><p>构造正则表达式的方法和创建数学表达式的方法一样。也就是用多种元字符与操作符较小的表达式结合在一起来创建更大的表达式。<br>可以通过在一对分隔符之间放入表达式模式的各种组件来构造一个正则表达式。</p>
+<p>对 js 而言，分隔符为一对正斜杠 (/) 字符。例如：<br>/expression/</p>
+<h4 id="看个例子">看个例子</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//匹配帐号是否合法(字母开头，允许<span class="number">5</span>-<span class="number">16</span>字节，允许字母数字下划线</span><br><span class="line">var re =new RegExp(<span class="string">"^[a-zA-Z][a-zA-Z0-9_]&#123;5,19&#125;$"</span>);</span><br><span class="line"><span class="keyword">if</span>(re.test(aaaa))&#123;</span><br><span class="line">alert(<span class="string">"格式正确"</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">alert(<span class="string">"格式错误"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>正则表达式的组件可以是单个的字符、字符集合、字符范围、字符间的选择或者所有这些组件的任意组合。</p>
+<h4 id="match_方法">match 方法</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/*使用 match 方法获取获取匹配数组*/ </span><br><span class="line">var pattern = /box/ig;//全局搜索 </span><br><span class="line">var str = <span class="string">'This is a Box!,That is a Box too'</span>; </span><br><span class="line">alert(str.match(pattern)); //匹配到两个 Box,Box</span><br><span class="line">console.log(str.match(pattern).length);//获取数组的长度</span><br></pre></td></tr></table></figure>
+<h4 id="search方法">search方法</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/*使用 search 来查找匹配数据*/</span><br><span class="line">var pattern = /box/ig;</span><br><span class="line">var str = <span class="string">'This is a Box!,That is a Box too'</span>; </span><br><span class="line">console.log(str.search(pattern));//查找到返回位置,否则返回 -<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h4 id="replace方法">replace方法</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/*使用 replace 替换匹配到的数据*/</span><br><span class="line">var pattern = /box/ig;</span><br><span class="line">var str = <span class="string">'This is a Box!,That is a Box too'</span>; </span><br><span class="line">console.log(str.replace(pattern, <span class="string">'Cat'</span>));//将 Box 替换成了 Cat</span><br></pre></td></tr></table></figure>
+<h4 id="split方法">split方法</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/*使用 split 拆分成字符串数组*/</span><br><span class="line"></span><br><span class="line"> var pattern = / /ig;</span><br><span class="line"> var str = <span class="string">'This is a Box!,That is a Box too'</span>;         </span><br><span class="line"> console.log(str.split(pattern));//将空格拆开分组成数组</span><br><span class="line">``` </span><br><span class="line"><span class="comment">#### exec方法</span></span><br><span class="line">``` bash</span><br><span class="line"> /* 统计子字符串出现的所有位置*/</span><br><span class="line"> </span><br><span class="line"> <span class="keyword">function</span> count(str)&#123;</span><br><span class="line">     var b,r=/def/g;</span><br><span class="line">     <span class="keyword">while</span>(b = r.exec(str))&#123;</span><br><span class="line">         console.log(b);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> count(<span class="string">'abcdefabcdefabcdefabcdef'</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="常用的正则表达式">常用的正则表达式</h4><p> 匹配中文字符的正则表达式： [\u4e00-\u9fa5]<br> 评注：匹配中文还真是个头疼的事，有了这个表达式就好办了</p>
+<p> 匹配双字节字符(包括汉字在内)：[^\x00-\xff]<br> 评注：可以用来计算字符串的长度（一个双字节字符长度计2，ASCII字符计1）</p>
+<p> 匹配空白行的正则表达式：\n\s*\r<br> 评注：可以用来删除空白行</p>
+<p> 匹配HTML标记的正则表达式：&lt;(\S<em>?)[^&gt;]</em>&gt;.<em>?&lt;/\1&gt;|&lt;.</em>? /&gt;<br> 评注：网上流传的版本太糟糕，上面这个也仅仅能匹配部分，对于复杂的嵌套标记依旧无能为力</p>
+<p> 匹配首尾空白字符的正则表达式：^\s<em>|\s</em>$<br> 评注：可以用来删除行首行尾的空白字符(包括空格、制表符、换页符等等)，非常有用的表达式</p>
+<p> 匹配Email地址的正则表达式：\w+([-+.]\w+)<em>@\w+([-.]\w+)</em>.\w+([-.]\w+)*<br> 评注：表单验证时很实用</p>
+<p> 匹配网址URL的正则表达式：[a-zA-z]+://[^\s]*<br> 评注：网上流传的版本功能很有限，上面这个基本可以满足需求</p>
+<p> 匹配帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：^[a-zA-Z][a-zA-Z0-9_]{4,15}$<br> 评注：表单验证时很实用</p>
+<p> 匹配国内电话号码：\d{3}-\d{8}|\d{4}-\d{7}<br> 评注：匹配形式如 0511-4405222 或 021-87888822</p>
+<p> 匹配腾讯QQ号：[1-9][0-9]{4,}<br> 评注：腾讯QQ号从10000开始</p>
+<p> 匹配中国邮政编码：[1-9]\d{5}(?!\d)<br> 评注：中国邮政编码为6位数字</p>
+<p> 匹配身份证：\d{15}|\d{18}<br> 评注：中国的身份证为15位或18位</p>
+<p> 匹配ip地址：\d+.\d+.\d+.\d+<br> 评注：提取ip地址时有用</p>
+<p> 文章参考：<a href="http://segmentfault.com/a/1190000000699097" target="_blank" rel="external">http://segmentfault.com/a/1190000000699097</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/07/javascript理解之事件详解/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          javascript理解之事件详解
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/07/javascript理解之Ajax和Http状态字/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">javascript理解之Ajax和Http状态字</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="javascript理解之正则表达式" data-title="javascript理解之正则表达式" data-url="http:eric-peng.github.io/2016/01/07/javascript理解之正则表达式/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"eric-peng"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-right">
+    		&copy; 2016 eric peng
+    	</div>      	
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: undefined,
+		animate: undefined,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: undefined
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+  </div>
+</body>
+</html>

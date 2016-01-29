@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>javascript设计模式之构造器模式 | eric-peng的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="简介ECMAScript 中可以采用构造函数(构造方法)可用来创建特定的对象。 该模式正好可以解决以上的工厂模式无法识别对象实例的问题。
+&amp;lt;script type=&quot;text/javascript&quot;&amp;gt;
+    function Car(model,year,miles){//构造函数模式
+        this.model = model;
+        this.year = y">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript设计模式之构造器模式">
+<meta property="og:url" content="http:eric-peng.github.io/2016/01/15/javascript设计模式之构造器模式/index.html">
+<meta property="og:site_name" content="eric-peng的博客">
+<meta property="og:description" content="简介ECMAScript 中可以采用构造函数(构造方法)可用来创建特定的对象。 该模式正好可以解决以上的工厂模式无法识别对象实例的问题。
+&amp;lt;script type=&quot;text/javascript&quot;&amp;gt;
+    function Car(model,year,miles){//构造函数模式
+        this.model = model;
+        this.year = y">
+<meta property="og:updated_time" content="2016-01-19T07:35:40.100Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript设计模式之构造器模式">
+<meta name="twitter:description" content="简介ECMAScript 中可以采用构造函数(构造方法)可用来创建特定的对象。 该模式正好可以解决以上的工厂模式无法识别对象实例的问题。
+&amp;lt;script type=&quot;text/javascript&quot;&amp;gt;
+    function Car(model,year,miles){//构造函数模式
+        this.model = model;
+        this.year = y">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+   
+	<script type="text/javascript"> 
+		var _hmt = _hmt || [];
+			(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "//hm.baidu.com/hm.js?5dba26570846fb50c527e5133d251a7a";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+			})();
+	</script>
+ 
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://tp4.sinaimg.cn/5626580951/180/5728799106/1" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">eric peng</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">我的首页</a></li>
+				        
+							<li><a href="/archives">全部博客</a></li>
+				        
+							<li><a href="http://www.baidu.com">在线简历</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/eric-peng" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/5740859095" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/eric-peng-38" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript基础/" style="font-size: 16.67px;">javascript基础</a> <a href="/tags/javascript算法/" style="font-size: 13.33px;">javascript算法</a> <a href="/tags/javascript设计模式/" style="font-size: 20px;">javascript设计模式</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">eric peng</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://tp4.sinaimg.cn/5626580951/180/5728799106/1" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">eric peng</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">我的首页</a></li>
+		        
+					<li><a href="/archives">全部博客</a></li>
+		        
+					<li><a href="http://www.baidu.com">在线简历</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/eric-peng" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/5740859095" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/eric-peng-38" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-javascript设计模式之构造器模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/15/javascript设计模式之构造器模式/" class="article-date">
+  	<time datetime="2016-01-15T02:05:07.000Z" itemprop="datePublished">2016-01-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript设计模式之构造器模式
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript设计模式/">javascript设计模式</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/设计模式/">设计模式</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="简介">简介</h3><p>ECMAScript 中可以采用构造函数(构造方法)可用来创建特定的对象。 该模式正好可以解决以上的工厂模式无法识别对象实例的问题。</p>
+<pre><code class="bash">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;
+    <span class="keyword">function</span> Car(model,year,miles){//构造函数模式
+        this.model = model;
+        this.year = year;
+        this.miles = miles;
+        this.run = <span class="function"><span class="title">function</span></span> () {
+            <span class="built_in">return</span> this.model + <span class="string">" has done "</span> + this.miles + <span class="string">"miles"</span>;
+        }
+    }
+    var Benz = new Car(<span class="string">'Benz'</span>,<span class="number">2014</span>,<span class="number">20000</span>);
+    var BMW = new Car(<span class="string">"BMW"</span>,<span class="number">2013</span>,<span class="number">12000</span>);
+    alert(Benz instanceof Car); //很清晰的识别他从属于 Car,<span class="literal">true</span>
+
+    console.log(Benz.run());
+    console.log(BMW.run());
+&lt;/script&gt;
+</code></pre>
+<a id="more"></a>
+<p>使用构造函数的方法 ，即解决了重复实例化的问题 ，又解决了对象识别的问题，该模式与工厂模式的不同之处在于：</p>
+<ol>
+<li>构造函数方法没有显示的创建对象 (new Object()); </li>
+<li>直接将属性和方法赋值给 this 对象;</li>
+<li>没有 renturn 语句。</li>
+</ol>
+<p>构造函数的方法有一些规范:</p>
+<ol>
+<li>函数名和实例化构造名相同且大写, (PS:非强制,但这么写有助于区分构造函数和 普通函数);</li>
+<li>通过构造函数创建对象,必须使用 new 运算符。  </li>
+</ol>
+<p>既然通过构造函数可以创建对象，那么这个对象是哪里来的， new Object()在什么地方执行了？执行的过程如下:</p>
+<ol>
+<li>当使用了构造函数,并且 new 构造函数(),那么就后台执行了 new Object();</li>
+<li>将构造函数的作用域给新对象，(即 new Object()创建出的对象)，而函数体内的 this 就代表 new Object()出来的对象。</li>
+<li>执行构造函数内的代码； </li>
+<li>返回新对象(后台直接返回)。 </li>
+</ol>
+<h4 id="带原型的CONSTRUCTOR(构造器)">带原型的CONSTRUCTOR(构造器)</h4><p>js中有一个名为prototype的属性。调用js构造器创建一个对象后，新对象就会具有构造器原型的所有属性。通过这种方式，可以创建多个Car对象，并访问相同的原型。</p>
+<pre><code class="bash">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;
+        <span class="keyword">function</span> Car(model,year,miles) {
+            this.model = model;
+            this.year = year;
+            this.miles = miles;
+        }
+        Car.prototype.run = <span class="function"><span class="title">function</span></span> () {
+            <span class="built_in">return</span> this.model + <span class="string">" has done "</span> + this.miles + <span class="string">" miles "</span>;
+
+        };
+        var Benz = new Car(<span class="string">'S350'</span>,<span class="number">2010</span>,<span class="number">20000</span>);
+        var Ford = new Car(<span class="string">'Ford'</span>,<span class="number">2012</span>,<span class="number">12000</span>);
+
+        console.log(Benz.run());//<span class="string">"S350 has done 20000 miles "</span>
+        console.log(Ford.run());
+    &lt;/script&gt;
+</code></pre>
+<p>现在run()的单一实例就能够在所有Car对象之间共享。</p>
+<p>原文参考：<a href="http://hao.jser.com/archive/4846/" target="_blank" rel="external">http://hao.jser.com/archive/4846/</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/15/javascript设计模式之适配器模式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          javascript设计模式之适配器模式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/15/javascript设计模式之外观模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">javascript设计模式之外观模式</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="javascript设计模式之构造器模式" data-title="javascript设计模式之构造器模式" data-url="http:eric-peng.github.io/2016/01/15/javascript设计模式之构造器模式/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"eric-peng"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-right">
+    		&copy; 2016 eric peng
+    	</div>      	
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: undefined,
+		animate: undefined,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: undefined
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+  </div>
+</body>
+</html>

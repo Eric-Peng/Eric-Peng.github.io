@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>javascript设计模式之单例模式 | eric-peng的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="基本结构简单的单体结构实际上就是一个对象字面量：1234567891011var Singleton = &amp;#123;  attribute1: true,  attribute2: 1,  method1: function() &amp;#123;    ...  &amp;#125;,  method2: function() &amp;#123;    ...  &amp;#125;&amp;#125;
+单体结构应该是一个只能被">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript设计模式之单例模式">
+<meta property="og:url" content="http:eric-peng.github.io/2016/01/12/javascript设计模式之单例模式/index.html">
+<meta property="og:site_name" content="eric-peng的博客">
+<meta property="og:description" content="基本结构简单的单体结构实际上就是一个对象字面量：1234567891011var Singleton = &amp;#123;  attribute1: true,  attribute2: 1,  method1: function() &amp;#123;    ...  &amp;#125;,  method2: function() &amp;#123;    ...  &amp;#125;&amp;#125;
+单体结构应该是一个只能被">
+<meta property="og:updated_time" content="2016-01-19T07:35:22.404Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript设计模式之单例模式">
+<meta name="twitter:description" content="基本结构简单的单体结构实际上就是一个对象字面量：1234567891011var Singleton = &amp;#123;  attribute1: true,  attribute2: 1,  method1: function() &amp;#123;    ...  &amp;#125;,  method2: function() &amp;#123;    ...  &amp;#125;&amp;#125;
+单体结构应该是一个只能被">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+   
+	<script type="text/javascript"> 
+		var _hmt = _hmt || [];
+			(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "//hm.baidu.com/hm.js?5dba26570846fb50c527e5133d251a7a";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+			})();
+	</script>
+ 
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://tp4.sinaimg.cn/5626580951/180/5728799106/1" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">eric peng</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">我的首页</a></li>
+				        
+							<li><a href="/archives">全部博客</a></li>
+				        
+							<li><a href="http://www.baidu.com">在线简历</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/eric-peng" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/5740859095" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/eric-peng-38" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript基础/" style="font-size: 16.67px;">javascript基础</a> <a href="/tags/javascript算法/" style="font-size: 13.33px;">javascript算法</a> <a href="/tags/javascript设计模式/" style="font-size: 20px;">javascript设计模式</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">eric peng</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://tp4.sinaimg.cn/5626580951/180/5728799106/1" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">eric peng</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">我的首页</a></li>
+		        
+					<li><a href="/archives">全部博客</a></li>
+		        
+					<li><a href="http://www.baidu.com">在线简历</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/eric-peng" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/5740859095" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/eric-peng-38" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-javascript设计模式之单例模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/12/javascript设计模式之单例模式/" class="article-date">
+  	<time datetime="2016-01-12T08:44:44.000Z" itemprop="datePublished">2016-01-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript设计模式之单例模式
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript设计模式/">javascript设计模式</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/设计模式/">设计模式</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="基本结构">基本结构</h3><p>简单的单体结构实际上就是一个对象字面量：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var Singleton = &#123;</span><br><span class="line">  attribute1: <span class="literal">true</span>,</span><br><span class="line">  attribute2: <span class="number">1</span>,</span><br><span class="line"></span><br><span class="line">  method1: <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;,</span><br><span class="line">  method2: <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>单体结构应该是一个只能被实例化一次，并且可以通过一个访问点访问的类。所谓访问点，可以理解为一个变量，这个变量在全局范围内可以访问到，并且只有一个。<br><a id="more"></a></p>
+<h3 id="单体结构的作用">单体结构的作用</h3><h4 id="命名空间">命名空间</h4><p>通过命名空间将相似的方法组合到一起也可以增加代码的文档性。另一方面，网页上的Javascript代码会根据其用途有不同的划分，分不同的人来维护。例如JS库代码，广告代码等。为了避免彼此之间产生冲突，在全局对象中也可以给不同用途的代码划分各自的命名空间，也就是存到各个单体中。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var Classicemi = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">Classicemi.Common = &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Classicemi.ErrorCodes = &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h4 id="网页专用代码包装器">网页专用代码包装器</h4><p>在一个网站中，有些Javascript代码是整个网站都要用到的，比如框架，库等。而有些代码是特定的网页才会用到，例如对一个页面中的DOM元素添加事件监听等。一般我们会通过给页面的load事件创建一个init方法来对所有需要的操作进行初始化，将所有的初始化代码放在一个方法中。<br>比如含有一个表单的页面，我们要取消submit的默认行为并添加ajax交互。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">Classicemi.RegPage = &#123;</span><br><span class="line">  FORM_ID: <span class="string">'reg-form'</span>,</span><br><span class="line">  OUTPUT_ID: <span class="string">'reg-results'</span>,</span><br><span class="line"></span><br><span class="line">  // 表单处理方法</span><br><span class="line">  handleSubmit: <span class="keyword">function</span>(e) &#123;</span><br><span class="line">    e.preventDefult();</span><br><span class="line">    ...</span><br><span class="line">  &#125; ,</span><br><span class="line">  sendRegistration: <span class="keyword">function</span>(data) &#123;</span><br><span class="line">    ... // 发送XHR请求</span><br><span class="line">  &#125;,</span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  // 初始化方法</span><br><span class="line">  init: <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    Classicemi.RegPage.formEl = $(Classicemi.RegPage.FORM_ID);</span><br><span class="line">    Classicemi.RegPage.outputEl = $(Classicemi.RegPage.OUTPUT_ID);</span><br><span class="line"></span><br><span class="line">    addEvent(Classicemi.RegPage.FormEl, <span class="string">'submit'</span>, Classicemi.RegPage.handleSubmit); // 添加事件</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">// 页面加载后运行初始化方法</span><br><span class="line">addLoadEvent(Classicemi.PageName.init);</span><br></pre></td></tr></table></figure></p>
+<h3 id="在单体中表示私用成员">在单体中表示私用成员</h3><p>对象中有时候有些属性和方法是需要进行保护，避免被修改的，这些成员称为私用成员。在单体中声明私用成员也是保护变量的一个好方法，另外，单体中创建私用成员的另一个好处在于由于单体只会被实例化一次，定义私用成员的时候就不用过多考虑内存浪费的问题。</p>
+<h4 id="使用闭包">使用闭包</h4><p>第一步，我们通过一个构造函数返回一个空对象，这就是单体对象的初始化：</p>
+<pre><code class="bash">var Classicemi.Singleton = (<span class="function"><span class="title">function</span></span>() {
+  <span class="built_in">return</span> {};
+})();
+</code></pre>
+<p>我们通过一个自执行构造函数返回单体对象的实例，下面就可以在这个构造函数中添加我们需要的私用对象了。</p>
+<pre><code class="bash">var Classicemi.Singleton = (<span class="function"><span class="title">function</span></span>() {
+  // 私用属性
+  var privateAttribute = <span class="literal">true</span>;
+
+  // 私用方法
+  <span class="keyword">function</span> <span class="function"><span class="title">privateMethod</span></span>() {
+    ...
+  }
+  <span class="built_in">return</span> {};
+})();
+</code></pre>
+<p>可以公开访问的公开属性和方法可以写在构造函数返回的对象中：</p>
+<pre><code class="bash">var Classicemi.Singleton = (<span class="function"><span class="title">function</span></span>() {
+  // 私用属性
+  var privateAttribute = <span class="literal">true</span>;
+
+  // 私用方法
+  <span class="keyword">function</span> <span class="function"><span class="title">privateMethod</span></span>() {
+    ...
+  }
+  <span class="built_in">return</span> {
+    publicAttribute: <span class="literal">false</span>,
+
+    publicMethod: <span class="function"><span class="title">function</span></span>() {
+      ...  
+    }
+  };
+})();
+</code></pre>
+<p>这就是用闭包创建私有成员的方法，这种单体模式又被成为模块模式（Module Pattern），我们创建的单体可以作为模块，对代码进行组织，并划分命名空间。最大的优点就是可以创建真正的私用成员，使其不会在构造函数之外被随意修改。同时，由于单体只会被实例化一次，不用担心内存浪费的问题。</p>
+<h3 id="惰性实例化单体">惰性实例化单体</h3><p>单体一般会在页面加载过程中进行实例化，如果单体的体积比较大的话，可能会对加载速度造成影响。对于体积比较大，在页面加载时也暂时不会起作用的单体，我们可以通过惰性加载（lazy loading）的方式进行实例化，也就是在需要的时候再进行实例化。</p>
+<p>实现惰性加载，我们要把原单体构造函数中的所有成员转移到一个内部的新构造函数中去：</p>
+<pre><code class="bash">Classicemi.Singleton = (<span class="function"><span class="title">function</span></span>() {
+  <span class="keyword">function</span> <span class="function"><span class="title">constructor</span></span>() {
+    // 私用属性
+    var privateAttribute = <span class="literal">true</span>;
+
+    // 私用方法
+    <span class="keyword">function</span> <span class="function"><span class="title">privateMethod</span></span>() {
+      ...
+    }
+    <span class="built_in">return</span> {
+      publicAttribute: <span class="literal">false</span>,
+
+      publicMethod: <span class="function"><span class="title">function</span></span>() {
+        ...  
+      }
+    };
+  }
+})();
+</code></pre>
+<p>在getInstance()方法内部，首先要对单体是否已经实例化进行检查，如果已经实例化过，就将其返回。如果没有实例化，就调用constructor方法。我们需要一个变量来保存实例化后的单体。</p>
+<pre><code class="bash">Classicemi.Singleton = (<span class="function"><span class="title">function</span></span>() {
+  var uniqueInstance; // 保存实例化后的单体
+
+  <span class="keyword">function</span> <span class="function"><span class="title">constructor</span></span>() {
+    ...
+  }
+
+  <span class="built_in">return</span> {
+    getInstance: <span class="function"><span class="title">function</span></span>() {
+      <span class="keyword">if</span> (!uniqueInstance) {
+        uniqueInstance = constructor();
+      }
+      <span class="built_in">return</span> uniqueInstance;
+    }
+  }
+})();
+</code></pre>
+<p>单体的构造函数像这样被改写后，调用其方法的代码就要由这样：</p>
+<pre><code class="bash">Classicemi.Singleton.getInstance().publicMethod();
+</code></pre>
+<h4 id="分支">分支</h4><p>分支（branching）技术的意义在于根据不同的条件，对单体进行不同的实例化过程。<br>在构造函数中存在不同的实例对象，针对condition判断条件的不同返回值，构造函数返回不同的对象作为单体的实例。例如对不同的浏览器来说，支持的XHR对象不一样，大多数浏览器中是XMLHttpRequest的实例，早期的IE浏览器中是某种ActiveX的实例。我们在创建XHR对象的时候，可以根据不同浏览器的支持情况返回不同的实例，like this：</p>
+<pre><code class="bash">var XHRFactory = (<span class="function"><span class="title">function</span></span>() {
+  var standard = {
+    createXHR: <span class="function"><span class="title">function</span></span>() {
+      <span class="built_in">return</span> new XMLHttpRequest();
+    }
+  };
+  var activeX = {
+    createXHR: <span class="function"><span class="title">function</span></span>() {
+      <span class="built_in">return</span> new ActiveXObject(<span class="string">'Msxml2.XMLHTTP'</span>);
+    }
+  };
+  var activeOld = {
+    createXHR: <span class="function"><span class="title">function</span></span>() {
+      <span class="built_in">return</span> new ActiveXObject(<span class="string">'Microsofe.XMLHTTP'</span>);
+    }
+  }
+
+  var <span class="built_in">test</span>Obj;
+  try {
+    <span class="built_in">test</span>Obj = standard.createXHR();
+    <span class="built_in">return</span> standard;
+  } catch (e) {
+    try {
+      <span class="built_in">test</span>Obj = activeX.createXHR();
+      <span class="built_in">return</span> standard;
+    } catch (e) {
+      try {
+        <span class="built_in">test</span>Obj = activeOld.createXHR();
+        <span class="built_in">return</span> standard;
+      } catch (e) {
+        throw new Error(<span class="string">'No XHR object found in this environment.'</span>);
+      }
+    }
+  }
+})();
+</code></pre>
+<p>通过try-catch语句对浏览器XHR的支持性进行测试同时防止抛出错误，这样不同浏览器都能创建出自己支持的XHR对象的实例。</p>
+<h3 id="单体模式之利弊">单体模式之利弊</h3><h4 id="单体模式之利">单体模式之利</h4><ol>
+<li>单体模式能很好的组织代码，由于单体对象只会实例化一次，单体对象中的代码可以方便地进行维护。</li>
+<li>单体模式可以生成自己的命名空间，防止自己的代码被别人随意修改。</li>
+<li>惰性实例化，有助于性能的提升。</li>
+<li>分支，针对特定环境定制专属的方法。</li>
+</ol>
+<h4 id="单体模式之弊">单体模式之弊</h4><p>类之间的耦合性可能增强，因为要通过命名空间去对一些方法进行访问，强耦合的后果会不利于单元测试。</p>
+<p>文章参考：<a href="http://hao.jser.com/archive/4199/" target="_blank" rel="external">http://hao.jser.com/archive/4199/</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/15/javascript设计模式之工厂模式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          javascript设计模式之工厂模式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/12/javascript之算法排序/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">javascript之算法查询</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="javascript设计模式之单例模式" data-title="javascript设计模式之单例模式" data-url="http:eric-peng.github.io/2016/01/12/javascript设计模式之单例模式/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"eric-peng"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-right">
+    		&copy; 2016 eric peng
+    	</div>      	
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: undefined,
+		animate: undefined,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: undefined
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+  </div>
+</body>
+</html>

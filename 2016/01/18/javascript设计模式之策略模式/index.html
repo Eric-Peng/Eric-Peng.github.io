@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>javascript设计模式之策略模式 | eric-peng的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="介绍策略模式定义了算法家族，分别封装起来，让他们之间可以互相替换，此模式让算法的变化不会影响到使用算法的客户。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript设计模式之策略模式">
+<meta property="og:url" content="http:eric-peng.github.io/2016/01/18/javascript设计模式之策略模式/index.html">
+<meta property="og:site_name" content="eric-peng的博客">
+<meta property="og:description" content="介绍策略模式定义了算法家族，分别封装起来，让他们之间可以互相替换，此模式让算法的变化不会影响到使用算法的客户。">
+<meta property="og:updated_time" content="2016-01-19T07:41:20.162Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript设计模式之策略模式">
+<meta name="twitter:description" content="介绍策略模式定义了算法家族，分别封装起来，让他们之间可以互相替换，此模式让算法的变化不会影响到使用算法的客户。">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+   
+	<script type="text/javascript"> 
+		var _hmt = _hmt || [];
+			(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "//hm.baidu.com/hm.js?5dba26570846fb50c527e5133d251a7a";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+			})();
+	</script>
+ 
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://tp4.sinaimg.cn/5626580951/180/5728799106/1" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">eric peng</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">我的首页</a></li>
+				        
+							<li><a href="/archives">全部博客</a></li>
+				        
+							<li><a href="http://www.baidu.com">在线简历</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/eric-peng" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/5740859095" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/eric-peng-38" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript基础/" style="font-size: 16.67px;">javascript基础</a> <a href="/tags/javascript算法/" style="font-size: 13.33px;">javascript算法</a> <a href="/tags/javascript设计模式/" style="font-size: 20px;">javascript设计模式</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">eric peng</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://tp4.sinaimg.cn/5626580951/180/5728799106/1" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">eric peng</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">我的首页</a></li>
+		        
+					<li><a href="/archives">全部博客</a></li>
+		        
+					<li><a href="http://www.baidu.com">在线简历</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/eric-peng" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/5740859095" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/eric-peng-38" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-javascript设计模式之策略模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/18/javascript设计模式之策略模式/" class="article-date">
+  	<time datetime="2016-01-18T06:30:43.000Z" itemprop="datePublished">2016-01-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript设计模式之策略模式
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript设计模式/">javascript设计模式</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/设计模式/">设计模式</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="介绍">介绍</h3><p>策略模式定义了算法家族，分别封装起来，让他们之间可以互相替换，此模式让算法的变化不会影响到使用算法的客户。<br><a id="more"></a></p>
+<h3 id="正文">正文</h3><p>在理解策略模式之前，我们先来一个例子，一般情况下，如果我们要做数据合法性验证，很多时候都是按照swith语句来判断，但是这就带来几个问题，首先如果增加需求的话，我们还要再次修改这段代码以增加逻辑，而且在进行单元测试的时候也会越来越复杂，代码如下：</p>
+<pre><code class="bash">validator = {
+           validate: <span class="keyword">function</span> (value, <span class="built_in">type</span>) {
+               switch (<span class="built_in">type</span>) {
+                   <span class="keyword">case</span> <span class="string">'isNonEmpty '</span>:
+                       {
+                           <span class="built_in">return</span> <span class="literal">true</span>; // NonEmpty 验证结果
+                       }
+                   <span class="keyword">case</span> <span class="string">'isNumber '</span>:
+                       {
+                           <span class="built_in">return</span> <span class="literal">true</span>; // Number 验证结果
+                           <span class="built_in">break</span>;
+                       }
+                   <span class="keyword">case</span> <span class="string">'isAlphaNum '</span>:
+                       {
+                           <span class="built_in">return</span> <span class="literal">true</span>; // AlphaNum 验证结果
+                       }
+                   default:
+                       {
+                           <span class="built_in">return</span> <span class="literal">true</span>;
+                       }
+               }
+           }
+       };
+       //  测试
+       alert(validator.validate(<span class="string">"123"</span>, <span class="string">"isNonEmpty"</span>));
+</code></pre>
+<p>那如何来避免上述代码中的问题呢，根据策略模式，我们可以将相同的工作代码单独封装成不同的类，然后通过统一的策略处理类来处理，OK，我们先来定义策略处理类，代码如下：</p>
+<pre><code class="bash">var validator = {
+
+    // 所有可以的验证规则处理类存放的地方，后面会单独定义
+    types: {},
+
+    // 验证类型所对应的错误消息
+    messages: [],
+
+    // 当然需要使用的验证类型
+    config: {},
+
+    // 暴露的公开验证方法
+    // 传入的参数是 key =&gt; value对
+    validate: <span class="keyword">function</span> (data) {
+
+        var i, msg, <span class="built_in">type</span>, checker, result_ok;
+
+        // 清空所有的错误信息
+        this.messages = [];
+
+        <span class="keyword">for</span> (i <span class="keyword">in</span> data) {
+            <span class="keyword">if</span> (data.hasOwnProperty(i)) {
+
+                <span class="built_in">type</span> = this.config[i];  // 根据key查询是否有存在的验证规则
+                checker = this.types[<span class="built_in">type</span>]; // 获取验证规则的验证类
+
+                <span class="keyword">if</span> (!<span class="built_in">type</span>) {
+                    <span class="built_in">continue</span>; // 如果验证规则不存在，则不处理
+                }
+                <span class="keyword">if</span> (!checker) { // 如果验证规则类不存在，抛出异常
+                    throw {
+                        name: <span class="string">"ValidationError"</span>,
+                        message: <span class="string">"No handler to validate type "</span> + <span class="built_in">type</span>
+                    };
+                }
+
+                result_ok = checker.validate(data[i]); // 使用查到到的单个验证类进行验证
+                <span class="keyword">if</span> (!result_ok) {
+                    msg = <span class="string">"Invalid value for *"</span> + i + <span class="string">"*, "</span> + checker.instructions;
+                    this.messages.push(msg);
+                }
+            }
+        }
+        <span class="built_in">return</span> this.hasErrors();
+    },
+
+    // helper
+    hasErrors: <span class="function"><span class="title">function</span></span> () {
+        <span class="built_in">return</span> this.messages.length !== <span class="number">0</span>;
+    }
+};
+</code></pre>
+<p>然后剩下的工作，就是定义types里存放的各种验证类了，我们这里只举几个例子：</p>
+<pre><code class="bash">// 验证给定的值是否不为空
+validator.types.isNonEmpty = {
+    validate: <span class="keyword">function</span> (value) {
+        <span class="built_in">return</span> value !== <span class="string">""</span>;
+    },
+    instructions: <span class="string">"传入的值不能为空"</span>
+};
+
+// 验证给定的值是否是数字
+validator.types.isNumber = {
+    validate: <span class="keyword">function</span> (value) {
+        <span class="built_in">return</span> !isNaN(value);
+    },
+    instructions: <span class="string">"传入的值只能是合法的数字，例如：1, 3.14 or 2010"</span>
+};
+
+// 验证给定的值是否只是字母或数字
+validator.types.isAlphaNum = {
+    validate: <span class="keyword">function</span> (value) {
+        <span class="built_in">return</span> !/[^a-z0-<span class="number">9</span>]/i.test(value);
+    },
+    instructions: <span class="string">"传入的值只能保护字母和数字，不能包含特殊字符"</span>
+};
+</code></pre>
+<p>使用的时候，我们首先要定义需要验证的数据集合，然后还需要定义每种数据需要验证的规则类型，代码如下：</p>
+<pre><code class="bash">var data = {
+    first_name: <span class="string">"Tom"</span>,
+    last_name: <span class="string">"Xu"</span>,
+    age: <span class="string">"unknown"</span>,
+    username: <span class="string">"TomXu"</span>
+};
+
+validator.config = {
+    first_name: <span class="string">'isNonEmpty'</span>,
+    age: <span class="string">'isNumber'</span>,
+    username: <span class="string">'isAlphaNum'</span>
+};
+</code></pre>
+<p>最后，获取验证结果的代码就简单了：</p>
+<pre><code class="bash">validator.validate(data);
+
+<span class="keyword">if</span> (validator.hasErrors()) {
+    console.log(validator.messages.join(<span class="string">"\n"</span>));
+}
+</code></pre>
+<h3 id="总结">总结</h3><p>策略模式定义了一系列算法，从概念上来说，所有的这些算法都是做相同的事情，只是实现不同，他可以以相同的方式调用所有的方法，减少了各种算法类与使用算法类之间的耦合。</p>
+<p>从另外一个层面上来说，单独定义算法类，也方便了单元测试，因为可以通过自己的算法进行单独测试。</p>
+<p>实践中，不仅可以封装算法，也可以用来封装几乎任何类型的规则，是要在分析过程中需要在不同时间应用不同的业务规则，就可以考虑是要策略模式来处理各种变化。</p>
+<p>原文参考；<a href="http://www.cnblogs.com/TomXu/archive/2012/03/05/2358552.html" target="_blank" rel="external">http://www.cnblogs.com/TomXu/archive/2012/03/05/2358552.html</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/18/javascript设计模式之模板方法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          javascript设计模式之模板方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/18/javascript设计模式之观察者模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">javascript设计模式之观察者模式</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="javascript设计模式之策略模式" data-title="javascript设计模式之策略模式" data-url="http:eric-peng.github.io/2016/01/18/javascript设计模式之策略模式/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"eric-peng"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-right">
+    		&copy; 2016 eric peng
+    	</div>      	
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: undefined,
+		animate: undefined,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: undefined
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+  </div>
+</body>
+</html>

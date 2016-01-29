@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>javascript设计模式之观察者模式 | eric-peng的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="例子观察者模式( 又叫发布者-订阅者模式 )应该是最常用的模式之一. 在很多语言里都得到大量应用. 包括我们平时接触的dom事件. 也是js和dom之间实现的一种观察者模式.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript设计模式之观察者模式">
+<meta property="og:url" content="http:eric-peng.github.io/2016/01/18/javascript设计模式之观察者模式/index.html">
+<meta property="og:site_name" content="eric-peng的博客">
+<meta property="og:description" content="例子观察者模式( 又叫发布者-订阅者模式 )应该是最常用的模式之一. 在很多语言里都得到大量应用. 包括我们平时接触的dom事件. 也是js和dom之间实现的一种观察者模式.">
+<meta property="og:updated_time" content="2016-01-19T07:42:31.962Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript设计模式之观察者模式">
+<meta name="twitter:description" content="例子观察者模式( 又叫发布者-订阅者模式 )应该是最常用的模式之一. 在很多语言里都得到大量应用. 包括我们平时接触的dom事件. 也是js和dom之间实现的一种观察者模式.">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+   
+	<script type="text/javascript"> 
+		var _hmt = _hmt || [];
+			(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "//hm.baidu.com/hm.js?5dba26570846fb50c527e5133d251a7a";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+			})();
+	</script>
+ 
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://tp4.sinaimg.cn/5626580951/180/5728799106/1" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">eric peng</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">我的首页</a></li>
+				        
+							<li><a href="/archives">全部博客</a></li>
+				        
+							<li><a href="http://www.baidu.com">在线简历</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/eric-peng" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/5740859095" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/eric-peng-38" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript基础/" style="font-size: 16.67px;">javascript基础</a> <a href="/tags/javascript算法/" style="font-size: 13.33px;">javascript算法</a> <a href="/tags/javascript设计模式/" style="font-size: 20px;">javascript设计模式</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">eric peng</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://tp4.sinaimg.cn/5626580951/180/5728799106/1" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">eric peng</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">我的首页</a></li>
+		        
+					<li><a href="/archives">全部博客</a></li>
+		        
+					<li><a href="http://www.baidu.com">在线简历</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/eric-peng" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/5740859095" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/eric-peng-38" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-javascript设计模式之观察者模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/18/javascript设计模式之观察者模式/" class="article-date">
+  	<time datetime="2016-01-18T02:26:44.000Z" itemprop="datePublished">2016-01-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript设计模式之观察者模式
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript设计模式/">javascript设计模式</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/设计模式/">设计模式</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="例子">例子</h3><p>观察者模式( 又叫发布者-订阅者模式 )应该是最常用的模式之一. 在很多语言里都得到大量应用. 包括我们平时接触的dom事件. 也是js和dom之间实现的一种观察者模式.<br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">div.onclick  =  <span class="keyword">function</span> <span class="function"><span class="title">click</span></span> ()&#123;</span><br><span class="line"> </span><br><span class="line">   alert ( <span class="string">''</span>click<span class="string">' )</span><br><span class="line"> </span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>只要订阅了div的click事件. 当点击div的时候, function click就会被触发.</p>
+<p>那么到底什么是观察者模式呢. 先看看生活中的观察者模式。</p>
+<p>观察者模式可以很好的实现2个模块之间的解耦。 假如我正在一个团队里开发一个html5游戏. 当游戏开始的时候，需要加载一些图片素材。加载好这些图片之后开始才执行游戏逻辑. 假设这是一个需要多人合作的项目. 我完成了Gamer和Map模块, 而我的同事A写了一个图片加载器loadImage.</p>
+<p>loadImage的代码如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">loadImage(  imgAry,  <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line"> </span><br><span class="line">Map.init();</span><br><span class="line"> </span><br><span class="line">Gamer.init();</span><br><span class="line"> </span><br><span class="line">&#125; )</span><br></pre></td></tr></table></figure></p>
+<p>当图片加载好之后, 再渲染地图, 执行游戏逻辑. 嗯, 这个程序运行良好. 突然有一天, 我想起应该给游戏加上声音功能. 我应该让图片加载器添上一行代码.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">loadImage(  imgAry,  <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line"> </span><br><span class="line">Map.init();</span><br><span class="line"> </span><br><span class="line">Gamer.init();</span><br><span class="line"> </span><br><span class="line">Sount.init();</span><br><span class="line"> </span><br><span class="line">&#125; )</span><br></pre></td></tr></table></figure></p>
+<p>可是写这个模块的同事A去了外地旅游. 于是我打电话给他, 喂. 你的loadImage函数在哪, 我能不能改一下, 改了之后有没有副作用. 如你所想, 各种不淡定的事发生了. 如果当初我们能这样写呢:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">loadImage.listen( <span class="string">''</span>ready<span class="string">', function()&#123;</span><br><span class="line"> </span><br><span class="line">    Map.init();</span><br><span class="line"> </span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line">loadImage.listen( '</span><span class="string">'ready'</span>, <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line"> </span><br><span class="line">   Gamer.init();</span><br><span class="line"> </span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line">loadImage.listen( <span class="string">''</span>ready<span class="string">', function()&#123;</span><br><span class="line"> </span><br><span class="line">   Sount.init();</span><br><span class="line"> </span><br><span class="line">&#125;)</span></span><br></pre></td></tr></table></figure></p>
+<p>loadImage完成之后, 它根本不关心将来会发生什么, 因为它的工作已经完成了. 接下来它只要发布一个信号.<br>loadImage.trigger( ”ready’ );</p>
+<h3 id="观察者js表示">观察者js表示</h3><p>JS里对观察者模式的实现是通过回调来实现的，我们来先定义一个pubsub对象，其内部包含了3个方法：订阅、退订、发布。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">var pubsub = &#123;&#125;;</span><br><span class="line">(<span class="keyword">function</span> (q) &#123;</span><br><span class="line"></span><br><span class="line">    var topics = &#123;&#125;, // 回调函数存放的数组</span><br><span class="line">        subUid = -<span class="number">1</span>;</span><br><span class="line">    // 发布方法</span><br><span class="line">    q.publish = <span class="keyword">function</span> (topic, args) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!topics[topic]) &#123;</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">set</span>Timeout(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">            var subscribers = topics[topic],</span><br><span class="line">                len = subscribers ? subscribers.length : <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (len--) &#123;</span><br><span class="line">                subscribers[len].func(topic, args);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line">    //订阅方法</span><br><span class="line">    q.subscribe = <span class="keyword">function</span> (topic, func) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!topics[topic]) &#123;</span><br><span class="line">            topics[topic] = [];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        var token = (++subUid).toString();</span><br><span class="line">        topics[topic].push(&#123;</span><br><span class="line">            token: token,</span><br><span class="line">            func: func</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="built_in">return</span> token;</span><br><span class="line">    &#125;;</span><br><span class="line">    //退订方法</span><br><span class="line">    q.unsubscribe = <span class="keyword">function</span> (token) &#123;</span><br><span class="line">        <span class="keyword">for</span> (var m <span class="keyword">in</span> topics) &#123;</span><br><span class="line">            <span class="keyword">if</span> (topics[m]) &#123;</span><br><span class="line">                <span class="keyword">for</span> (var i = <span class="number">0</span>, j = topics[m].length; i &lt; j; i++) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (topics[m][i].token === token) &#123;</span><br><span class="line">                        topics[m].splice(i, <span class="number">1</span>);</span><br><span class="line">                        <span class="built_in">return</span> token;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125; (pubsub));</span><br></pre></td></tr></table></figure></p>
+<p>使用方式如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//来，订阅一个</span><br><span class="line">pubsub.subscribe(<span class="string">'example1'</span>, <span class="keyword">function</span> (topics, data) &#123;</span><br><span class="line">    console.log(topics + <span class="string">": "</span> + data);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//发布通知</span><br><span class="line">pubsub.publish(<span class="string">'example1'</span>, <span class="string">'hello world!'</span>);</span><br><span class="line">pubsub.publish(<span class="string">'example1'</span>, [<span class="string">'test'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]);</span><br><span class="line">pubsub.publish(<span class="string">'example1'</span>, [&#123; <span class="string">'color'</span>: <span class="string">'blue'</span> &#125;, &#123; <span class="string">'text'</span>: <span class="string">'hello'</span>&#125;]);</span><br></pre></td></tr></table></figure></p>
+<p>怎么样？用起来是不是很爽？但是这种方式有个问题，就是没办法退订订阅，要退订的话必须指定退订的名称，所以我们再来一个版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//将订阅赋值给一个变量，以便退订</span><br><span class="line">var <span class="built_in">test</span>Subscription = pubsub.subscribe(<span class="string">'example1'</span>, <span class="keyword">function</span> (topics, data) &#123;</span><br><span class="line">    console.log(topics + <span class="string">": "</span> + data);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//发布通知</span><br><span class="line">pubsub.publish(<span class="string">'example1'</span>, <span class="string">'hello world!'</span>);</span><br><span class="line">pubsub.publish(<span class="string">'example1'</span>, [<span class="string">'test'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]);</span><br><span class="line">pubsub.publish(<span class="string">'example1'</span>, [&#123; <span class="string">'color'</span>: <span class="string">'blue'</span> &#125;, &#123; <span class="string">'text'</span>: <span class="string">'hello'</span>&#125;]);</span><br><span class="line"></span><br><span class="line">//退订</span><br><span class="line"><span class="built_in">set</span>Timeout(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    pubsub.unsubscribe(<span class="built_in">test</span>Subscription);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">//再发布一次，验证一下是否还能够输出信息</span><br><span class="line">pubsub.publish(<span class="string">'example1'</span>, <span class="string">'hello again! (this will fail)'</span>);</span><br></pre></td></tr></table></figure>
+<p>原文参考1：<a href="http://www.alloyteam.com/2012/10/commonly-javascript-design-pattern-observer-mode/" target="_blank" rel="external">http://www.alloyteam.com/2012/10/commonly-javascript-design-pattern-observer-mode/</a><br>原文参考2:<a href="http://www.cnblogs.com/TomXu/archive/2012/03/02/2355128.html" target="_blank" rel="external">http://www.cnblogs.com/TomXu/archive/2012/03/02/2355128.html</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/18/javascript设计模式之策略模式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          javascript设计模式之策略模式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/18/javascript设计模式之代理模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">javascript设计模式之代理模式</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="javascript设计模式之观察者模式" data-title="javascript设计模式之观察者模式" data-url="http:eric-peng.github.io/2016/01/18/javascript设计模式之观察者模式/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"eric-peng"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-right">
+    		&copy; 2016 eric peng
+    	</div>      	
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: undefined,
+		animate: undefined,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: undefined
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+  </div>
+</body>
+</html>

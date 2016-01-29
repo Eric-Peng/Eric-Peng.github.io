@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>javascript设计模式之建造者模式 | eric-peng的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="定义 将一个复杂对象的构造与它的表示相分离，使同样的创建过程可有不同的表示，这就叫做建造者模式。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript设计模式之建造者模式">
+<meta property="og:url" content="http:eric-peng.github.io/2016/01/15/javascript设计模式之建造者模式/index.html">
+<meta property="og:site_name" content="eric-peng的博客">
+<meta property="og:description" content="定义 将一个复杂对象的构造与它的表示相分离，使同样的创建过程可有不同的表示，这就叫做建造者模式。">
+<meta property="og:updated_time" content="2016-01-19T07:49:55.601Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript设计模式之建造者模式">
+<meta name="twitter:description" content="定义 将一个复杂对象的构造与它的表示相分离，使同样的创建过程可有不同的表示，这就叫做建造者模式。">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+   
+	<script type="text/javascript"> 
+		var _hmt = _hmt || [];
+			(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "//hm.baidu.com/hm.js?5dba26570846fb50c527e5133d251a7a";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+			})();
+	</script>
+ 
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://tp4.sinaimg.cn/5626580951/180/5728799106/1" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">eric peng</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">我的首页</a></li>
+				        
+							<li><a href="/archives">全部博客</a></li>
+				        
+							<li><a href="http://www.baidu.com">在线简历</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/eric-peng" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/5740859095" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/eric-peng-38" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript基础/" style="font-size: 16.67px;">javascript基础</a> <a href="/tags/javascript算法/" style="font-size: 13.33px;">javascript算法</a> <a href="/tags/javascript设计模式/" style="font-size: 20px;">javascript设计模式</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">eric peng</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://tp4.sinaimg.cn/5626580951/180/5728799106/1" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">eric peng</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">我的首页</a></li>
+		        
+					<li><a href="/archives">全部博客</a></li>
+		        
+					<li><a href="http://www.baidu.com">在线简历</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/eric-peng" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/5740859095" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/eric-peng-38" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-javascript设计模式之建造者模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/15/javascript设计模式之建造者模式/" class="article-date">
+  	<time datetime="2016-01-15T06:46:45.000Z" itemprop="datePublished">2016-01-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript设计模式之建造者模式
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript设计模式/">javascript设计模式</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/设计模式/">设计模式</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="定义">定义</h3><p> 将一个复杂对象的构造与它的表示相分离，使同样的创建过程可有不同的表示，这就叫做建造者模式。<br> <a id="more"></a></p>
+<h3 id="过程">过程</h3><ol>
+<li>Builder 这个接口类，定义这个建造者[工人]，统一的可操作的行为方式，它表示一个复杂的结构对象;</li>
+<li>ConcreteBuilder 用于创建[实现] Builder 各种形态的实例对象，来表示 Builder 不同的表示;</li>
+<li>Director 这个指挥者 用于指导 Builder 实例的执行过程跟形式，用于与 Builder 的实例 表现 相分离，用于指导 这个 Builder 实例 按某规则顺序来创建生成 产品结果;</li>
+<li>ResultObject 创建的结果都会生成一个结果对象；这是具体创建者根据 Director 指导创建的结果;</li>
+</ol>
+<p>JavaScript 这种弱语言里，没有接口这样的东西，就忽略接口定义这一层，直接创建具体建造者，再建一个 指导类来回调这个建造者；</p>
+<h3 id="例子">例子</h3><p> 1 工人建造者X:</p>
+<pre><code class="bash"><span class="keyword">function</span> <span class="function"><span class="title">workerBuilder</span></span>() {
+    this.workOne = <span class="function"><span class="title">function</span></span>() {
+         //建房子骨架
+    }
+    this.workTwo=<span class="function"><span class="title">function</span></span>() {
+         //建睡房
+    }
+    this.workThree=<span class="function"><span class="title">function</span></span>() {
+         //建厨房
+    }
+    this.workFour=<span class="function"><span class="title">function</span></span>() {
+         //建客厅
+    }
+    //....
+
+    this.getResult = <span class="function"><span class="title">function</span></span>() {
+         //建成房子
+　　　　　var house = new House();
+　　　　　//house.HouseFrame ...
+　　　　　<span class="built_in">return</span> house;　
+    }
+}
+</code></pre>
+<p>workBuilder 是具体建造者类，workOne, Two是要做的事情，建骨架等;</p>
+<p>当然 workBuilder 可以多建几个，用于表示 工人 对于每个工作执行的方法不一样；但工作内容是一样的;</p>
+<p>2 指挥者类</p>
+<pre><code class="bash"><span class="keyword">function</span> <span class="function"><span class="title">Director</span></span>() {
+     this.construct = <span class="keyword">function</span>(builder) {
+          builder.workOne();
+          builder.workTwo();
+          builder.workThree();
+          builder.workFour();
+          //...
+          //上面的内容，顺序可设置，并且工作项也可以设定
+     }
+}
+</code></pre>
+<p>指挥者类下的 指导 方法，有对 建造者 的回调引用，内容包括建者工作内容几项或全部; 指挥者对建造者工人要做的事情进行组织跟安排；</p>
+<p>3 产品房子</p>
+<pre><code class="bash"><span class="keyword">function</span> <span class="function"><span class="title">House</span></span>() {
+    this.HouseFrame = <span class="string">''</span>;
+    this.Room = <span class="string">''</span>;
+    this.Kitchen = <span class="string">''</span>;
+    this.LivingRoom = <span class="string">''</span>;
+    //...
+}
+</code></pre>
+<p>4 使用方法</p>
+<pre><code class="bash">var builder = new workBuilder();
+var director = new Director();
+director.construct(builder);
+
+var house = builder.getResult();
+</code></pre>
+<p>第四步，整个使用相当于客户：房主人，房主人请 Director 工头来建房子，但是工头是不做事的，所以他指挥 builder 工个来建子，最后房主人从工人那里取得建好的房子；</p>
+<h3 id="使用场景">使用场景</h3><p>建造者模式比较适于那种，内容[抽象]复杂，实际场景表现又多个不一样，比如工作内容或顺序不一致的情况；比如每个人每天的生活过程啊，还有像上面的实例类似的场景；通过指导者层，可以减少对很多相似工作场合，但工作规则顺序不一致的环境；可以大减少对实际对象的建造抽象；</p>
+<p>文章参考：<a href="http://www.cnblogs.com/editor/p/4158760.html" target="_blank" rel="external">http://www.cnblogs.com/editor/p/4158760.html</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/15/javascript设计模式之装饰者模式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          javascript设计模式之装饰者模式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/15/javascript设计模式之适配器模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">javascript设计模式之适配器模式</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="javascript设计模式之建造者模式" data-title="javascript设计模式之建造者模式" data-url="http:eric-peng.github.io/2016/01/15/javascript设计模式之建造者模式/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"eric-peng"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-right">
+    		&copy; 2016 eric peng
+    	</div>      	
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: undefined,
+		animate: undefined,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: undefined
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+  </div>
+</body>
+</html>

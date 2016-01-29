@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>javascript设计模式之适配器模式 | eric-peng的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="介绍适配器模式（Adapter）是将一个类（对象）的接口（方法或属性）转化成客户希望的另外一个接口（方法或属性），适配器模式使得原本由于接口不兼容而不能一起工作的那些类（对象）可以一些工作。速成包装器（wrapper）。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript设计模式之适配器模式">
+<meta property="og:url" content="http:eric-peng.github.io/2016/01/15/javascript设计模式之适配器模式/index.html">
+<meta property="og:site_name" content="eric-peng的博客">
+<meta property="og:description" content="介绍适配器模式（Adapter）是将一个类（对象）的接口（方法或属性）转化成客户希望的另外一个接口（方法或属性），适配器模式使得原本由于接口不兼容而不能一起工作的那些类（对象）可以一些工作。速成包装器（wrapper）。">
+<meta property="og:image" content="http:eric-peng.github.io/img/blog/20160115_1.png">
+<meta property="og:updated_time" content="2016-01-19T07:36:08.476Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript设计模式之适配器模式">
+<meta name="twitter:description" content="介绍适配器模式（Adapter）是将一个类（对象）的接口（方法或属性）转化成客户希望的另外一个接口（方法或属性），适配器模式使得原本由于接口不兼容而不能一起工作的那些类（对象）可以一些工作。速成包装器（wrapper）。">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+   
+	<script type="text/javascript"> 
+		var _hmt = _hmt || [];
+			(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "//hm.baidu.com/hm.js?5dba26570846fb50c527e5133d251a7a";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+			})();
+	</script>
+ 
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://tp4.sinaimg.cn/5626580951/180/5728799106/1" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">eric peng</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">我的首页</a></li>
+				        
+							<li><a href="/archives">全部博客</a></li>
+				        
+							<li><a href="http://www.baidu.com">在线简历</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/eric-peng" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/5740859095" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/eric-peng-38" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript基础/" style="font-size: 16.67px;">javascript基础</a> <a href="/tags/javascript算法/" style="font-size: 13.33px;">javascript算法</a> <a href="/tags/javascript设计模式/" style="font-size: 20px;">javascript设计模式</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">eric peng</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://tp4.sinaimg.cn/5626580951/180/5728799106/1" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">eric peng</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">我的首页</a></li>
+		        
+					<li><a href="/archives">全部博客</a></li>
+		        
+					<li><a href="http://www.baidu.com">在线简历</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/eric-peng" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/5740859095" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/eric-peng-38" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-javascript设计模式之适配器模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/15/javascript设计模式之适配器模式/" class="article-date">
+  	<time datetime="2016-01-15T02:58:26.000Z" itemprop="datePublished">2016-01-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript设计模式之适配器模式
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript设计模式/">javascript设计模式</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/设计模式/">设计模式</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="介绍">介绍</h3><p>适配器模式（Adapter）是将一个类（对象）的接口（方法或属性）转化成客户希望的另外一个接口（方法或属性），适配器模式使得原本由于接口不兼容而不能一起工作的那些类（对象）可以一些工作。速成包装器（wrapper）。<br><img src="/img/blog/20160115_1.png" alt="适配器模式"><br><a id="more"></a></p>
+<h3 id="例子">例子</h3><p>我们来举一个例子，鸭子（Dock）有飞（fly）和嘎嘎叫（quack）的行为，而火鸡虽然也有飞（fly）的行为，但是其叫声是咯咯的（gobble）。如果你非要火鸡也要实现嘎嘎叫（quack）这个动作，那我们可以复用鸭子的quack方法，但是具体的叫还应该是咯咯的，此时，我们就可以创建一个火鸡的适配器，以便让火鸡也支持quack方法，其内部还是要调用gobble。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//鸭子</span><br><span class="line">var Duck = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line">Duck.prototype.fly = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">throw new Error(<span class="string">"该方法必须被重写!"</span>);</span><br><span class="line">&#125;;</span><br><span class="line">Duck.prototype.quack = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">throw new Error(<span class="string">"该方法必须被重写!"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//火鸡</span><br><span class="line">var Turkey = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line">Turkey.prototype.fly = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    throw new Error(<span class="string">" 该方法必须被重写 !"</span>);</span><br><span class="line">&#125;;</span><br><span class="line">Turkey.prototype.gobble = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    throw new Error(<span class="string">" 该方法必须被重写 !"</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>然后再定义具体的鸭子和火鸡的构造函数，分别为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">//鸭子</span><br><span class="line">var MallardDuck = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    Duck.apply(this);</span><br><span class="line">&#125;;</span><br><span class="line">MallardDuck.prototype = new Duck(); //原型是Duck</span><br><span class="line">MallardDuck.prototype.fly = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">"可以飞翔很长的距离!"</span>);</span><br><span class="line">&#125;;</span><br><span class="line">MallardDuck.prototype.quack = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">"嘎嘎！嘎嘎！"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//火鸡</span><br><span class="line">var WildTurkey = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    Turkey.apply(this);</span><br><span class="line">&#125;;</span><br><span class="line">WildTurkey.prototype = new Turkey(); //原型是Turkey</span><br><span class="line">WildTurkey.prototype.fly = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">"飞翔的距离貌似有点短!"</span>);</span><br><span class="line">&#125;;</span><br><span class="line">WildTurkey.prototype.gobble = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">"咯咯！咯咯！"</span>);</span><br><span class="line">&#125;;</span><br><span class="line">``` </span><br><span class="line">为了让火鸡也支持quack方法，我们创建了一个新的火鸡适配器TurkeyAdapter：</span><br><span class="line">``` bash</span><br><span class="line">var TurkeyAdapter = <span class="keyword">function</span>(oTurkey)&#123;</span><br><span class="line">    Duck.apply(this);</span><br><span class="line">    this.oTurkey = oTurkey;</span><br><span class="line">&#125;;</span><br><span class="line">TurkeyAdapter.prototype = new Duck();</span><br><span class="line">TurkeyAdapter.prototype.quack = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    this.oTurkey.gobble();</span><br><span class="line">&#125;;</span><br><span class="line">TurkeyAdapter.prototype.fly = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    var nFly = <span class="number">0</span>;</span><br><span class="line">    var nLenFly = <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">for</span>(; nFly &lt; nLenFly;)&#123;</span><br><span class="line">        this.oTurkey.fly();</span><br><span class="line">        nFly = nFly + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>该构造函数接受一个火鸡的实例对象，然后使用Duck进行apply，其适配器原型是Duck，然后要重新修改其原型的quack方法，以便内部调用oTurkey.gobble()方法。其fly方法也做了一些改变，让火鸡连续飞5次（内部也是调用自身的oTurkey.fly()方法）。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var oMallardDuck = new MallardDuck();</span><br><span class="line">var oWildTurkey = new WildTurkey();</span><br><span class="line">var oTurkeyAdapter = new TurkeyAdapter(oWildTurkey);</span><br><span class="line"></span><br><span class="line">//原有的鸭子行为</span><br><span class="line">oMallardDuck.fly();</span><br><span class="line">oMallardDuck.quack();</span><br><span class="line"></span><br><span class="line">//原有的火鸡行为</span><br><span class="line">oWildTurkey.fly();</span><br><span class="line">oWildTurkey.gobble();</span><br><span class="line"></span><br><span class="line">//适配器火鸡的行为（火鸡调用鸭子的方法名称）</span><br><span class="line">oTurkeyAdapter.fly();</span><br><span class="line">oTurkeyAdapter.quack();</span><br></pre></td></tr></table></figure></p>
+<h3 id="总结">总结</h3><p> 那合适使用适配器模式好呢？如果有以下情况出现时，建议使用：</p>
+<ol>
+<li>使用一个已经存在的对象，但其方法或属性接口不符合你的要求；</li>
+<li>你想创建一个可复用的对象，该对象可以与其它不相关的对象或不可见对象（即接口方法或属性不兼容的对象）协同工作；想使用已经存在的对象，但是不能对每一个都进行原型继承以匹配它的接口。对象适配器可以适配它的父对象接口方法或属性。</li>
+<li><p>另外，适配器模式和其它几个模式可能容易让人迷惑，这里说一下大概的区别：</p>
+<p>另外，适配器模式和其它几个模式可能容易让人迷惑，这里说一下大概的区别：</p>
+</li>
+<li>适配器和桥接模式虽然类似，但桥接的出发点不同，桥接的目的是将接口部分和实现部分分离，从而对他们可以更为容易也相对独立的加以改变。而适配器则意味着改变一个已有对象的接口。</li>
+<li>装饰者模式增强了其它对象的功能而同时又不改变它的接口，因此它对应程序的透明性比适配器要好，其结果是装饰者支持递归组合，而纯粹使用适配器则是不可能的。</li>
+<li>代理模式在不改变它的接口的条件下，为另外一个对象定义了一个代理。</li>
+</ol>
+<p> 原文参考1：<a href="http://www.cnblogs.com/TomXu/archive/2012/04/11/2435452.html" target="_blank" rel="external">http://www.cnblogs.com/TomXu/archive/2012/04/11/2435452.html</a><br> 原文参考2：<a href="http://hao.jser.com/archive/4466/" target="_blank" rel="external">http://hao.jser.com/archive/4466/</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/15/javascript设计模式之建造者模式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          javascript设计模式之建造者模式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/15/javascript设计模式之构造器模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">javascript设计模式之构造器模式</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="javascript设计模式之适配器模式" data-title="javascript设计模式之适配器模式" data-url="http:eric-peng.github.io/2016/01/15/javascript设计模式之适配器模式/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"eric-peng"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-right">
+    		&copy; 2016 eric peng
+    	</div>      	
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: undefined,
+		animate: undefined,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: undefined
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+  </div>
+</body>
+</html>

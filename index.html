@@ -109,7 +109,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript基础/" style="font-size: 20px;">javascript基础</a> <a href="/tags/javascript算法/" style="font-size: 15px;">javascript算法</a>
+						<a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript基础/" style="font-size: 16.67px;">javascript基础</a> <a href="/tags/javascript算法/" style="font-size: 13.33px;">javascript算法</a> <a href="/tags/javascript设计模式/" style="font-size: 20px;">javascript设计模式</a>
 					</div>
 				</section>
 				
@@ -165,11 +165,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-javascript之算法排序" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-javascript设计模式之职责链模式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/12/javascript之算法排序/" class="article-date">
-  	<time datetime="2016-01-12T02:59:31.000Z" itemprop="datePublished">2016-01-12</time>
+      <a href="/2016/01/19/javascript设计模式之职责链模式/" class="article-date">
+  	<time datetime="2016-01-19T07:17:54.000Z" itemprop="datePublished">2016-01-19</time>
 </a>
     </div>
   
@@ -182,7 +182,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/12/javascript之算法排序/">&#39;javascript之算法查询&#39;</a>
+      <a class="article-title" href="/2016/01/19/javascript设计模式之职责链模式/">javascript设计模式之职责链模式</a>
     </h1>
   
 
@@ -191,23 +191,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="冒泡排序_–_时间复杂度O(n^2)">冒泡排序 – 时间复杂度O(n^2)</h3><pre><code class="bash">//冒泡排序
-<span class="keyword">function</span> bubbleSort(A) {
-    <span class="keyword">for</span> (var i = <span class="number">0</span>; i &lt; A.length; i++) {
-        var sorted = <span class="literal">true</span>;
-    //注意：内循环是倒着来的
-        <span class="keyword">for</span> (var j = A.length - <span class="number">1</span>; j &gt; i; j--) {
-            <span class="keyword">if</span> (A[j] &lt; A[j - <span class="number">1</span>]) {
-                swap(A, j, j - <span class="number">1</span>);
-                sorted = <span class="literal">false</span>;                   
-            }
-        }
-        <span class="keyword">if</span> (sorted) {
-            <span class="built_in">return</span>;
-        }
-    }
-}
-</code></pre>
+        <p>职责链模式是一个对象A向另一个对象B发起请求，如果B不处理，可以把请求转给C，如果C不处理，又可以把请求转给D。一直到有一个对象愿意处理这个请求为止。<br>
       
     </div>
     
@@ -215,18 +199,18 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript算法/">javascript算法</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript设计模式/">javascript设计模式</a></li></ul>
 	</div>
 
       
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/算法/">算法</a>
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/设计模式/">设计模式</a>
 	</div>
 
 
       
         <p class="article-more-link">
-          <a  href="/2016/01/12/javascript之算法排序/#more">更多 >></a>
+          <a  href="/2016/01/19/javascript设计模式之职责链模式/#more">更多 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -243,11 +227,11 @@
 
 
   
-    <article id="post-javascript之算法查找" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-javascript设计模式之组合模式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/11/javascript之算法查找/" class="article-date">
-  	<time datetime="2016-01-11T10:38:05.000Z" itemprop="datePublished">2016-01-11</time>
+      <a href="/2016/01/19/javascript设计模式之组合模式/" class="article-date">
+  	<time datetime="2016-01-19T07:09:21.000Z" itemprop="datePublished">2016-01-19</time>
 </a>
     </div>
   
@@ -260,7 +244,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/11/javascript之算法查找/">javascript之算法查找</a>
+      <a class="article-title" href="/2016/01/19/javascript设计模式之组合模式/">javascript设计模式之组合模式</a>
     </h1>
   
 
@@ -269,7 +253,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="入门级算法-线性查找-时间复杂度O(n)">入门级算法-线性查找-时间复杂度O(n)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//线性搜索(入门HelloWorld)</span><br><span class="line">//A为数组，x为要搜索的值</span><br><span class="line"><span class="keyword">function</span> linearSearch(A, x) &#123;</span><br><span class="line">    <span class="keyword">for</span> (var i = <span class="number">0</span>; i &lt; A.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (A[i] == x) &#123;</span><br><span class="line">            <span class="built_in">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>组合模式又叫部分-整体模式，它将所有对象组合成树形结构。使得用户只需要操作最上层的接口，就可以对所有成员做相同的操作。<br>
       
     </div>
     
@@ -277,18 +261,18 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript算法/">javascript算法</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript设计模式/">javascript设计模式</a></li></ul>
 	</div>
 
       
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/算法/">算法</a>
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/设计模式/">设计模式</a>
 	</div>
 
 
       
         <p class="article-more-link">
-          <a  href="/2016/01/11/javascript之算法查找/#more">更多 >></a>
+          <a  href="/2016/01/19/javascript设计模式之组合模式/#more">更多 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -305,11 +289,11 @@
 
 
   
-    <article id="post-javascript理解之js跨域" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-javascript设计模式之享元模式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/08/javascript理解之js跨域/" class="article-date">
-  	<time datetime="2016-01-08T07:05:30.000Z" itemprop="datePublished">2016-01-08</time>
+      <a href="/2016/01/18/javascript设计模式之享元模式/" class="article-date">
+  	<time datetime="2016-01-18T13:29:40.000Z" itemprop="datePublished">2016-01-18</time>
 </a>
     </div>
   
@@ -322,7 +306,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/08/javascript理解之js跨域/">javascript理解之js跨域</a>
+      <a class="article-title" href="/2016/01/18/javascript设计模式之享元模式/">javascript设计模式之享元模式</a>
     </h1>
   
 
@@ -331,7 +315,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="什么是跨域？">什么是跨域？</h3><p>概念：只要协议、域名、端口有任何一个不同，都被当作是不同的域。<br>
+        <h3 id="介绍">介绍</h3><p>享元模式（Flyweight），运行共享技术有效地支持大量细粒度的对象，避免大量拥有相同内容的小类的开销(如耗费内存)，使大家共享一个类(元类)。<br>
       
     </div>
     
@@ -339,18 +323,18 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript基础/">javascript基础</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript设计模式/">javascript设计模式</a></li></ul>
 	</div>
 
       
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/js跨域/">js跨域</a>
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/设计模式/">设计模式</a>
 	</div>
 
 
       
         <p class="article-more-link">
-          <a  href="/2016/01/08/javascript理解之js跨域/#more">更多 >></a>
+          <a  href="/2016/01/18/javascript设计模式之享元模式/#more">更多 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -367,11 +351,11 @@
 
 
   
-    <article id="post-javascript理解之变量、作用域" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-javascript设计模式之模板方法" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/08/javascript理解之变量、作用域/" class="article-date">
-  	<time datetime="2016-01-08T03:36:24.000Z" itemprop="datePublished">2016-01-08</time>
+      <a href="/2016/01/18/javascript设计模式之模板方法/" class="article-date">
+  	<time datetime="2016-01-18T07:07:35.000Z" itemprop="datePublished">2016-01-18</time>
 </a>
     </div>
   
@@ -384,7 +368,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/08/javascript理解之变量、作用域/">javascript理解之变量、作用域</a>
+      <a class="article-title" href="/2016/01/18/javascript设计模式之模板方法/">javascript设计模式之模板方法</a>
     </h1>
   
 
@@ -393,8 +377,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>基本类型值有：undefined，NUll，Boolean，Number和String，这些类型分别在内存中占有固定的大小空间，他们的值保存在栈空间，我们通过按值来访问的。</p>
-<p>（1）值类型：数值、布尔值、null、undefined。<br>（2）引用类型：对象、数组、函数。<br>
+        <h3 id="介绍">介绍</h3><p>模板方法（TemplateMethod）定义了一个操作中的算法的骨架，而将一些步骤延迟到子类中。模板方法使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。<br>
       
     </div>
     
@@ -402,18 +385,18 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript基础/">javascript基础</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript设计模式/">javascript设计模式</a></li></ul>
 	</div>
 
       
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/变量/">变量</a><a class="article-category-link" href="/categories/javascript/变量/作用域/">作用域</a>
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/设计模式/">设计模式</a>
 	</div>
 
 
       
         <p class="article-more-link">
-          <a  href="/2016/01/08/javascript理解之变量、作用域/#more">更多 >></a>
+          <a  href="/2016/01/18/javascript设计模式之模板方法/#more">更多 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -430,11 +413,11 @@
 
 
   
-    <article id="post-javascript理解之事件详解" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-javascript设计模式之策略模式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/07/javascript理解之事件详解/" class="article-date">
-  	<time datetime="2016-01-07T13:03:45.000Z" itemprop="datePublished">2016-01-07</time>
+      <a href="/2016/01/18/javascript设计模式之策略模式/" class="article-date">
+  	<time datetime="2016-01-18T06:30:43.000Z" itemprop="datePublished">2016-01-18</time>
 </a>
     </div>
   
@@ -447,7 +430,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/07/javascript理解之事件详解/">javascript理解之事件详解</a>
+      <a class="article-title" href="/2016/01/18/javascript设计模式之策略模式/">javascript设计模式之策略模式</a>
     </h1>
   
 
@@ -456,7 +439,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="事件冒泡与捕获">事件冒泡与捕获</h3><p><img src="/img/blog/20160107_5.png" alt="事件冒泡与捕获"><br>
+        <h3 id="介绍">介绍</h3><p>策略模式定义了算法家族，分别封装起来，让他们之间可以互相替换，此模式让算法的变化不会影响到使用算法的客户。<br>
       
     </div>
     
@@ -464,18 +447,18 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript基础/">javascript基础</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript设计模式/">javascript设计模式</a></li></ul>
 	</div>
 
       
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/事件/">事件</a>
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/设计模式/">设计模式</a>
 	</div>
 
 
       
         <p class="article-more-link">
-          <a  href="/2016/01/07/javascript理解之事件详解/#more">更多 >></a>
+          <a  href="/2016/01/18/javascript设计模式之策略模式/#more">更多 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -492,11 +475,11 @@
 
 
   
-    <article id="post-javascript理解之正则表达式" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-javascript设计模式之观察者模式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/07/javascript理解之正则表达式/" class="article-date">
-  	<time datetime="2016-01-07T11:53:41.000Z" itemprop="datePublished">2016-01-07</time>
+      <a href="/2016/01/18/javascript设计模式之观察者模式/" class="article-date">
+  	<time datetime="2016-01-18T02:26:44.000Z" itemprop="datePublished">2016-01-18</time>
 </a>
     </div>
   
@@ -509,7 +492,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/07/javascript理解之正则表达式/">javascript理解之正则表达式</a>
+      <a class="article-title" href="/2016/01/18/javascript设计模式之观察者模式/">javascript设计模式之观察者模式</a>
     </h1>
   
 
@@ -518,7 +501,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="基本概念">基本概念</h3><p>正则表达式是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为“元字符”）。模式描述在搜索文本时要匹配的一个或多个字符串。<br>
+        <h3 id="例子">例子</h3><p>观察者模式( 又叫发布者-订阅者模式 )应该是最常用的模式之一. 在很多语言里都得到大量应用. 包括我们平时接触的dom事件. 也是js和dom之间实现的一种观察者模式.<br>
       
     </div>
     
@@ -526,18 +509,18 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript基础/">javascript基础</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript设计模式/">javascript设计模式</a></li></ul>
 	</div>
 
       
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/正则表达式/">正则表达式</a>
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/设计模式/">设计模式</a>
 	</div>
 
 
       
         <p class="article-more-link">
-          <a  href="/2016/01/07/javascript理解之正则表达式/#more">更多 >></a>
+          <a  href="/2016/01/18/javascript设计模式之观察者模式/#more">更多 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -554,11 +537,11 @@
 
 
   
-    <article id="post-javascript理解之Ajax和Http状态字" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-javascript设计模式之代理模式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/07/javascript理解之Ajax和Http状态字/" class="article-date">
-  	<time datetime="2016-01-07T10:19:02.000Z" itemprop="datePublished">2016-01-07</time>
+      <a href="/2016/01/18/javascript设计模式之代理模式/" class="article-date">
+  	<time datetime="2016-01-18T02:20:59.000Z" itemprop="datePublished">2016-01-18</time>
 </a>
     </div>
   
@@ -571,7 +554,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/07/javascript理解之Ajax和Http状态字/">javascript理解之Ajax和Http状态字</a>
+      <a class="article-title" href="/2016/01/18/javascript设计模式之代理模式/">javascript设计模式之代理模式</a>
     </h1>
   
 
@@ -580,8 +563,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Ajax及其工作原理">Ajax及其工作原理</h3><p>AJAX 是一种与服务器交换数据无需刷新网页的技术。</p>
-<p><img src="/img/blog/20160107_1.jpg" alt="AJAX工作原理"><br>
+        <h3 id="介绍">介绍</h3><p>代理模式（Proxy），为其他对象提供一种代理以控制对这个对象的访问。<br>
       
     </div>
     
@@ -589,18 +571,18 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript基础/">javascript基础</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript设计模式/">javascript设计模式</a></li></ul>
 	</div>
 
       
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/Ajax，Http/">Ajax，Http</a>
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/设计模式/">设计模式</a>
 	</div>
 
 
       
         <p class="article-more-link">
-          <a  href="/2016/01/07/javascript理解之Ajax和Http状态字/#more">更多 >></a>
+          <a  href="/2016/01/18/javascript设计模式之代理模式/#more">更多 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -617,11 +599,11 @@
 
 
   
-    <article id="post-javascript理解之json" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-javascript设计模式之装饰者模式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/07/javascript理解之json/" class="article-date">
-  	<time datetime="2016-01-07T10:08:30.000Z" itemprop="datePublished">2016-01-07</time>
+      <a href="/2016/01/15/javascript设计模式之装饰者模式/" class="article-date">
+  	<time datetime="2016-01-15T07:50:38.000Z" itemprop="datePublished">2016-01-15</time>
 </a>
     </div>
   
@@ -634,7 +616,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/07/javascript理解之json/">javascript理解之json</a>
+      <a class="article-title" href="/2016/01/15/javascript设计模式之装饰者模式/">javascript设计模式之装饰者模式</a>
     </h1>
   
 
@@ -643,8 +625,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="什么是JSON">什么是JSON</h3><p>JSON：JavaScript 对象表示法（JavaScript Object Notation）。</p>
-<p>JSON的形式是用大括号“{}”包围起来的项目列表，每一个项目间用逗号（,）分隔，而项目就是用冒号（:）分隔的属性名和属性值。这是典型的字典表示形式，也再次表明javascript里的对象就是字典结构。不管多么复杂的对象，都可以用一句JSON代码来创建并赋值。在JSON中，名称/值对 包括字段名称（在双引号中），后面写一个冒号，然后是值。<br>
+        <h3 id="介绍">介绍</h3><p>装饰者用于包装同接口的对象，不仅允许你向方法添加行为，而且还可以将方法设置成原始对象调用（例如装饰者的构造函数）。<br>
       
     </div>
     
@@ -652,18 +633,18 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript基础/">javascript基础</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript设计模式/">javascript设计模式</a></li></ul>
 	</div>
 
       
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/json/">json</a>
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/设计模式/">设计模式</a>
 	</div>
 
 
       
         <p class="article-more-link">
-          <a  href="/2016/01/07/javascript理解之json/#more">更多 >></a>
+          <a  href="/2016/01/15/javascript设计模式之装饰者模式/#more">更多 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -680,11 +661,11 @@
 
 
   
-    <article id="post-javascript理解之function函数部分" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-javascript设计模式之建造者模式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/07/javascript理解之function函数部分/" class="article-date">
-  	<time datetime="2016-01-07T08:54:13.000Z" itemprop="datePublished">2016-01-07</time>
+      <a href="/2016/01/15/javascript设计模式之建造者模式/" class="article-date">
+  	<time datetime="2016-01-15T06:46:45.000Z" itemprop="datePublished">2016-01-15</time>
 </a>
     </div>
   
@@ -697,7 +678,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/07/javascript理解之function函数部分/">javascript理解之function函数部分</a>
+      <a class="article-title" href="/2016/01/15/javascript设计模式之建造者模式/">javascript设计模式之建造者模式</a>
     </h1>
   
 
@@ -706,7 +687,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="函数的概念：">函数的概念：</h3><p>函数是由事件驱动的或者当它被调用时执行的可重复使用的代码块。<br>
+        <h3 id="定义">定义</h3><p> 将一个复杂对象的构造与它的表示相分离，使同样的创建过程可有不同的表示，这就叫做建造者模式。<br>
       
     </div>
     
@@ -714,18 +695,18 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript基础/">javascript基础</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript设计模式/">javascript设计模式</a></li></ul>
 	</div>
 
       
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/函数/">函数</a>
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/设计模式/">设计模式</a>
 	</div>
 
 
       
         <p class="article-more-link">
-          <a  href="/2016/01/07/javascript理解之function函数部分/#more">更多 >></a>
+          <a  href="/2016/01/15/javascript设计模式之建造者模式/#more">更多 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -742,11 +723,11 @@
 
 
   
-    <article id="post-javascript理解之bom与dom" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-javascript设计模式之适配器模式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/07/javascript理解之bom与dom/" class="article-date">
-  	<time datetime="2016-01-07T08:37:38.000Z" itemprop="datePublished">2016-01-07</time>
+      <a href="/2016/01/15/javascript设计模式之适配器模式/" class="article-date">
+  	<time datetime="2016-01-15T02:58:26.000Z" itemprop="datePublished">2016-01-15</time>
 </a>
     </div>
   
@@ -759,7 +740,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/07/javascript理解之bom与dom/">javascript理解之Bom与Dom</a>
+      <a class="article-title" href="/2016/01/15/javascript设计模式之适配器模式/">javascript设计模式之适配器模式</a>
     </h1>
   
 
@@ -768,7 +749,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="DOM介绍">DOM介绍</h3><p>D（文档）可以理解为整个Web加载的网页文档，O（对象）可以理解为类似window对象只来的东西，可以调用属性和方法，这里我们说的是document对象，M（模型）可以理解为网页文档的树形结构，DOM树由节点构成<br>
+        <h3 id="介绍">介绍</h3><p>适配器模式（Adapter）是将一个类（对象）的接口（方法或属性）转化成客户希望的另外一个接口（方法或属性），适配器模式使得原本由于接口不兼容而不能一起工作的那些类（对象）可以一些工作。速成包装器（wrapper）。<br><img src="/img/blog/20160115_1.png" alt="适配器模式"><br>
       
     </div>
     
@@ -776,18 +757,18 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript基础/">javascript基础</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript设计模式/">javascript设计模式</a></li></ul>
 	</div>
 
       
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/Bom/">Bom</a><a class="article-category-link" href="/categories/javascript/Bom/Dom/">Dom</a>
+	<a class="article-category-link" href="/categories/javascript/">javascript</a><a class="article-category-link" href="/categories/javascript/设计模式/">设计模式</a>
 	</div>
 
 
       
         <p class="article-more-link">
-          <a  href="/2016/01/07/javascript理解之bom与dom/#more">更多 >></a>
+          <a  href="/2016/01/15/javascript设计模式之适配器模式/#more">更多 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -806,7 +787,7 @@
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </div>
